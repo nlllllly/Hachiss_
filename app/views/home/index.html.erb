@@ -1,0 +1,94 @@
+<div class="mx-atuo" style="width: 100%; height: 100%; height: 720px; overflow: hidden;">
+    <!-- メイン動画 -->
+    <div class="text-center">
+        <%= video_tag("background_video.mp4", autoplay: true, loop: true, muted: true, preload: "metadata", style: "width: auto; height: 100%; opacity: 0.5;") %>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!-- 見出し と アイコン -->
+        <div style="position: absolute; top: 50%; left: 2%; width: 70%;">
+            <h1>Hachijo-Island.</h1>
+        </div>
+        <div style="position: absolute; top: 50%; right: 2%; width: 30%; height: auto;">
+            <%= image_tag 'logos/hachijo-main.png', id: "main-fadein", style: "width: 90%; height: auto;", oncontextmenu: "return false;", onselectstart:"return false;", onmousedown: "return false;" %>
+        </div>
+
+    </div>
+
+
+    <%# About %>
+    <div class="row p-4" style="background-color: #fffffe; height: 300px;">
+        <div class="col-12 pb-3">
+            <h2>About</h2>
+
+            <div class="row">
+                <div class="col-lg-9 mx-auto">
+                    <p>このサイトは</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <%# Products %>
+    <div class="row p-4" style="background-color: #e3f6f5; height: 300px;">
+        <div class="col-12 pb-3">
+            <h2>Products</h2>
+            
+            <div class="row">
+                <div class="col-lg-9 mx-auto">
+                    <p>商品一覧を表示</p>
+                    <p>商品一覧ページへ</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <%# Ranking %>
+    <div class="row p-4" style="background-color: #ffd803; height: 300px;">
+        <div class="col-12 pb-3">
+            <h2>Ranking</h2>
+
+            <div class="row">
+                <div class="col-lg-9 mx-auto">
+                    <p>おすすめ商品の一覧を表示</p>
+                    <p>ランキング一覧を表示</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <%# Producers %>
+    <div class="row p-4" style="background-color: #fffffe; height: 300px;">
+        <div class="col-12 pb-3">
+            <h2>Producers</h2>
+
+            <div class="row">
+                <div class="col-lg-9 mx-auto">
+                    <p>生産者をランダムで表示</p>
+                    <p>生産者一覧へ</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <h1 style="font-family: 'Libre Barcode 39', cursive;">Hachijo-jima is Beautiful Island.</h1>
+
+
+</div>

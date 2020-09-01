@@ -1,0 +1,119 @@
+<div class="container-fluid">
+  <div class="row p-4">
+        
+    <%# 会員登録フォーム %>
+    <div class="col-lg-10 mx-auto">
+
+      <h2>アカウント登録</h2>
+      <div class="pt-3"></div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "customers/shared/error_messages", resource: resource %>
+        
+        <div class="form-row m-2">
+          <div class="field form-group col-6">
+            <%= f.label :last_name_kana, "* 姓（カタカナ）", class:"col-12" %>
+            <%= f.text_field :last_name_kana, autocomplete: "last_name_kana", placeholder:"ヤマダ", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+          <div class="field form-group col-6">
+            <%= f.label :first_name_kana, "* 名（カタカナ）", class:"col-12" %>
+            <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", placeholder:"タロウ", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :last_name, "* 姓（漢字）", class:"col-12" %>
+            <%= f.text_field :last_name, autocomplete: "last_name", placeholder:"山田", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+          <div class="field form-group col-6">
+            <%= f.label :first_name, "* 名（漢字）", class:"col-12" %>
+            <%= f.text_field :first_name, autocomplete: "first_name", placeholder:"太郎", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :sex, "* 性別" , class:"col-12" %>
+            <%= f.select :sex, ['男性', '女性'], {include_blank: '選択してください'}, autocomplete: "sex", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :birth_date, "* 生年月日", class:"col-12" %>
+            <%= f.date_select :birth_date,
+              use_month_numbers: true, 
+              prompt: false,
+              class: "form-control",
+              start_year: 1930, 
+              end_year: (Time.now.year - 0), 
+              default: Date.new(1990, 1, 1), 
+              date_separator:' / '
+            %>
+            <div class="mb-5"></div>
+          </div>
+
+
+          <div class="field form-group col-12">
+            <%= f.label :postcode, "* 郵便番号（ハイフンなし）", class:"col-12" %>
+            <%= f.text_field :postcode, autocomplete: "postcode", placeholder:"0000000", class:"form-control col-5" %>
+          </div>
+
+          <div class="field form-group col-12">
+            <%= f.label :prefecture_name, "* 都道府県", class:"col-12" %>
+            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, { prompt: '選択してください' }, autocomplete: "prefecture_name", class:"form-control col-5" %>
+          </div>
+
+          <div class="field form-group col-12">
+            <%= f.label :address_city, "* 市区町村", class:"col-12" %>
+            <%= f.text_field :address_city, autocomplete: "address_city", placeholder:"", class:"form-control col-lg-11" %>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :address_street, "* 番地", class:"col-12" %>
+            <%= f.text_field :address_street, autocomplete: "address_street", placeholder:"", class:"form-control col-lg-10" %>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :address_building, "建物名", class:"col-12" %>
+            <%= f.text_field :address_building, autocomplete: "address_building", placeholder:"", class:"form-control col-lg-10" %>
+            <div class="mb-5"></div>
+          </div>
+
+
+
+          <div class="field form-group col-12">
+            <%= f.label :email, "* メールアドレス", class:"col-12" %>
+            <%= f.email_field :email, autocomplete: "email", placeholder:"Enter email", class:"form-control col-lg-5" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :password, "* パスワード", class:"col-12" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password", class:"form-control col-lg-10" %>
+          </div>
+          <div class="field form-group col-6">
+            <%= f.label :password_confirmation, "* パスワードの再入力", class:"col-12" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Password", class:"form-control col-lg-10" %>
+          </div>
+          <div class="form-group col-12">
+            <% if @minimum_password_length %>
+              <p>※パスワードは<%= @minimum_password_length %> 文字以上で設定してください。</p>
+            <% end %>
+            <div class="mb-5"></div>
+          </div>
+
+          <div class="actions form-group col-12 text-center">
+            <div class="mt-3"></div>
+            <%= f.submit "登録する", class:"btn btn-info col-lg-3" %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+    <%# 会員登録フォーム終わり %>
+
+    <%= render "customers/shared/links" %>
+
+  </div>
+</div>

@@ -1,0 +1,143 @@
+<div class="container-fluid">
+  <div class="row p-4">
+
+    <%# アカウント編集フォーム %>
+    <div class="col-lg-10 mx-auto">
+
+      <h2>アカウント情報の編集</h2>
+      <div class="pt-3"></div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "customers/shared/error_messages", resource: resource %>
+
+        <div class="form-row m-2">
+          <div class="field form-group col-6">
+            <%= f.label :last_name_kana, "* 姓（カタカナ）", class:"col-12" %>
+            <%= f.text_field :last_name_kana, autocomplete: "last_name_kana", placeholder:"ヤマダ", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+          <div class="field form-group col-6">
+            <%= f.label :first_name_kana, "* 名（カタカナ）", class:"col-12" %>
+            <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", placeholder:"タロウ", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :last_name, "* 姓（漢字）", class:"col-12" %>
+            <%= f.text_field :last_name, autocomplete: "last_name", placeholder:"山田", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+          <div class="field form-group col-6">
+            <%= f.label :first_name, "* 名（漢字）", class:"col-12" %>
+            <%= f.text_field :first_name, autocomplete: "first_name", placeholder:"太郎", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :sex, "* 性別" , class:"col-12" %>
+            <%= f.select :sex, ['男性', '女性'], {include_blank: '選択してください'}, autocomplete: "sex", class:"form-control col-lg-10" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :birth_date, "* 生年月日", class:"col-12" %>
+            <%= f.date_select :birth_date,
+              use_month_numbers: true, 
+              prompt: false,
+              class: "form-control",
+              start_year: 1930, 
+              end_year: (Time.now.year - 0), 
+              default: Date.new(1990, 1, 1), 
+              date_separator:' / '
+            %>
+            <div class="mb-5"></div>
+          </div>
+
+
+          <div class="field form-group col-12">
+            <%= f.label :postbame, "* 郵便番号（ハイフンなし）", class:"col-12" %>
+            <%= f.text_field :postcode, autocomplete: "postcode", placeholder:"0000000", class:"form-control col-5" %>
+          </div>
+
+          <div class="field form-group col-12">
+            <%= f.label :prefecture_name, "* 都道府県", class:"col-12" %>
+            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, { prompt: '選択してください' }, autocomplete: "prefecture_name", class:"form-control col-5" %>
+          </div>
+
+          <div class="field form-group col-12">
+            <%= f.label :address_city, "* 市区町村", class:"col-12" %>
+            <%= f.text_field :address_city, autocomplete: "address_city", placeholder:"", class:"form-control col-lg-11" %>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :address_street, "* 番地", class:"col-12" %>
+            <%= f.text_field :address_street, autocomplete: "address_street", placeholder:"", class:"form-control col-lg-10" %>
+          </div>
+
+          <div class="field form-group col-6">
+            <%= f.label :address_building, "建物名", class:"col-12" %>
+            <%= f.text_field :address_building, autocomplete: "address_building", placeholder:"", class:"form-control col-lg-10" %>
+            <div class="mb-5"></div>
+          </div>
+
+
+
+          <div class="field form-group col-12">
+            <%= f.label :email, "* メールアドレス", class:"col-12" %>
+            <%= f.email_field :email, autocomplete: "email", placeholder:"Enter email", class:"form-control col-lg-5" %>
+            <div class="mb-3"></div>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+          
+          <div class="field form-group col-12">
+            <%= f.label :current_password, "* 現在のパスワード", class:"col-12" %>
+            <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control col-lg-5" %>
+            <p>※変更を保存する場合は、現在のパスワードを入力してください。</p>
+            <div class="mb-5"></div>
+          </div>
+
+          <div class="border-top border-info col-12" style="padding: 20px;"></div>
+
+          <div class="field form-group col-12">
+            <%= f.label :password, "* 新しいパスワード", class:"col-12" %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control col-lg-5" %>
+            <% if @minimum_password_length %>
+              <p>※パスワードは<%= @minimum_password_length %> 文字以上で、変更する際のみ入力してください。
+            <% end %>
+            <div class="mb-3"></div>
+          </div>
+
+          <div class="field form-group col-12">
+            <%= f.label :password_confirmation, "* 新しいパスワードの確認", class:"col-12" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control col-lg-5" %>
+            <div class="mb-5"></div>
+          </div>
+          
+          <div class="actions form-group col-12 text-center">
+            <div class="mt-3"></div>
+            <%= f.submit "変更を保存する", class:"btn btn-info col-lg-3" %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+    <%# アカウント編集フォーム終了 %>
+
+    <%# アカウント削除 %>
+    <div class="col-12">
+      <h3>アカウントの削除</h3>
+      <div class="pt-3"></div>
+      <p>※ アカウントを削除する場合はこちらから
+      <div class="actions form-group col-12 text-center">
+        <%= button_to "アカウントを削除する", registration_path(resource_name), class:"btn btn-danger col-lg-9", data: { confirm: "本当に削除してもいいですか？" }, method: :delete %>
+      </div>
+    </div>
+    <%# アカウント削除終了 %>
+
+    <%= link_to "Back", :back %>
+
+  </div>
+</div>
