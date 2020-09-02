@@ -3,7 +3,6 @@
         
     <%# 会員アカウントログインフォーム %>
     <div class="col-xs-12 mx-auto" >
-    
       <div class="text-center p-5 m-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
 
         <h3>ログイン</h3>
@@ -33,10 +32,12 @@
 
           <div class="actions form-group">
             <div class="mt-3"></div>
-              <%= f.submit "ログイン", class:"btn btn-primary col-12" %>
-            </div>
+            <%= f.submit "ログイン", class:"btn btn-primary col-12" %>
+          </div>
+
         <% end %>
 
+        <%# リンク系 %>
         <%= render "customers/shared/links" %>
 
       </div>
