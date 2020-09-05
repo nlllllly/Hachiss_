@@ -4,12 +4,33 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :orders
+  has_many :shippings
+  has_many :cart_items
+  has_many :product_favorites
+  has_many :product_comments
+
+  # バリデーション
+  validates :last_name_kana, presence: true, length: { minimum:1, maximum:10 }
+  validates :first_name_kana, presence: true, length: { minimum:1, maximum:10 }
+  validates :last_name, presence: true, length: { minimum:1, maximum:10 }
+  validates :first_name, presence: true, length: { minimum:1, maximum:10 }
+  validates :birth_date, presence: true
+  validates :sex, presence: true
+  validates :postcode, presence: true, length: { minimum:7, maximum:8 }
+  validates :prefecture_code, presence: true
+  validates :address_city, presence: true
+  validates :address_street, presence: true
+  validates :address_building, presence: false
 
 
+  # sex enum
 
 
-
-
+  # 会員フルネーム表示用 
+  def full_name
+    self.last_name + " " + self.first_name
+  end
 
          
   # 住所自動入力（jp_prefecture）

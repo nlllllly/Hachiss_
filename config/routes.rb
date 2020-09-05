@@ -13,13 +13,13 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
   # 会員情報
-  resource :customers, only: [:edit, :update]
+    # resource :customers, only: [:update]
   get 'customers/my_page' => 'customers#show'
   get 'customers/unsubscribe' => 'customers/unsubscribe'
   patch 'customers/withdraw' => 'customers/withdraw'
   
   
-  # 商品関連（いいね・コメント含む）
+  # 商品関連（いいね・コメント・検索 含む）
   resources :products, only: [:show, :index] do
     resource :product_favorites, only: [:create, :destroy]
     resources :product_comments, only: [:create, :destroy]
