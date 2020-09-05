@@ -10,10 +10,19 @@ class Order < ApplicationRecord
     validates :delivery_fee, presence: true
     validates :total_price, presence: true
 
-    # payment_method enum
-
-
-    # order_status enum
+    # 支払方法（0=クレジットカード / 1=銀行振込）
+    enum payment_method: {
+        credit_card: 0,
+        bank_transfer: 1 
+    }
+    
+    # 注文ステータス（0=支払待ち / 1=支払済み / 2=発送準備中 / 3=発送済み）
+    enum order_status: {
+        waiting: 0,
+        paid_up: 1,
+        preparing: 2,
+        shipped: 3
+      }
 
 
 end

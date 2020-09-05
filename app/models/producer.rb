@@ -9,7 +9,10 @@ class Producer < ApplicationRecord
 
     attachment :image
 
-    # producer_status enum
-
+    # 生産者ステータス（0=無効 / 1=有効）
+    enum producer_status: {
+        invaild: 0,
+        active: 1
+    }
     
 end

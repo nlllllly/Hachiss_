@@ -24,7 +24,11 @@ class Customer < ApplicationRecord
   validates :address_building, presence: false
 
 
-  # sex enum
+  # sex用（0=男性 / 1=女性）
+  enum sex: {
+    male: 0,
+    female: 1
+  }
 
 
   # 会員フルネーム表示用 

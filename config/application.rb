@@ -13,8 +13,9 @@ module InitialApp
 
     # タイムゾーン 東京へ変更
     config.time_zone = 'Tokyo'
-    # エラー表示日本語化
+    # 標準 日本語化
     config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

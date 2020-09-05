@@ -15,8 +15,14 @@ class Product < ApplicationRecord
 
     attachment :image
 
-    # sale_status enum
+    # 販売ステータス（0=販売停止 / 1=販売中 / 2=売り切れ）
+    enum sale_status: {
+        discontinued: 0,
+        on_sale: 1,
+        sold_out: 2
+    }
 
+    # 消費税
     def tax
     end
 

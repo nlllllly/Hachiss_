@@ -1,25 +1,72 @@
 ja:
-    date:
-      formats:
-        default: "%Y/%m/%d"
-        short: "%m/%d"
-        long: "%Y年%m月%d日(%a)"
-  
-      day_names: [日曜日, 月曜日, 火曜日, 水曜日, 木曜日, 金曜日, 土曜日]
-      abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
-  
-      month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
-      abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
-  
-      order:
-        - :year
-        - :month
-        - :day
-  
-    time:
-      formats:
-        default: "%Y/%m/%d %H:%M:%S"
-        short: "%y/%m/%d %H:%M"
-        long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
-      am: "午前"
-      pm: "午後"
+  # 日付用
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%m/%d"
+      long: "%Y年%m月%d日(%a)"
+
+    day_names: [日曜日, 月曜日, 火曜日, 水曜日, 木曜日, 金曜日, 土曜日]
+    abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+
+    month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%y/%m/%d %H:%M"
+      long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
+    am: "午前"
+    pm: "午後"
+    
+  enums:
+    # customer.rb用
+    customer:
+      sex:
+        male: "男性"
+        female: "女性"
+
+    # genre.rb用
+    genre:
+      genre_status:
+        invaild: "無効"
+        active: "有効"
+
+    # product.rb用
+    product:
+      sale_status:
+        discountinued: "販売停止"
+        on_sale: "販売中"
+        sold_out: "売り切れ"
+
+    # producer.rb用
+    producer:
+      producer_status:
+        invaild: "無効"
+        active: "有効"
+
+    # order.rb用
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        bank_transfer: "銀行振込"
+        order_status:
+          waiting: "支払待ち"
+          paid_up: "支払済み"
+          preparing: "発送準備中"
+          shipped: "発送済み"
+          
+    # order_detail.rb用
+    order_detail:
+      product_dtatus:
+        cheking: "在庫確認中"
+        backorder: "入荷待ち"
+        ready: "準備完了"
+          
+        

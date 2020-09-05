@@ -77,6 +77,9 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
+# enum
+gem 'enum_help'
+
 # jquery
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

@@ -61,34 +61,63 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
-            postal_code:
+            sex:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
               too_short: "は%{count}文字以上に設定して下さい。"
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
-            street_address:
+            birth_date:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
               too_short: "は%{count}文字以上に設定して下さい。"
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
-            phone_num:
+            postcode:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
               too_short: "は%{count}文字以上に設定して下さい。"
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
-            customer_status:
+            prefecture_code:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
               too_short: "は%{count}文字以上に設定して下さい。"
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
+            address_city:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"
+            address_street:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"
+            address_building:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"
+            phone_number:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"
+
     # 管理者・会員 項目名
     attributes:
       admin:
@@ -107,10 +136,14 @@ ja:
         first_name_kana: "メイ（カタカナ）"
         last_name: "姓（漢字）"
         first_name: "名（漢字）"
-        postal_code: "郵便番号"
-        street_address: "住所"
-        phone_num: "電話番号"
-        customer_status: "会員ステータス"
+        sex: "性別"
+        birth_date: "生年月日"
+        postcode: "郵便番号"
+        prefecture_code: "都道府県"
+        address_city: "市区町村"
+        address_street: "番地"
+        address_building: "建物名"
+        phone_number: "電話番号"
     # モデル名
     models:
       admin: "管理者"
