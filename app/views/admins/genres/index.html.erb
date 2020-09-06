@@ -1,0 +1,64 @@
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <h3>ジャンル登録 & 一覧</h3>
+        </div>
+
+        <div class="col-lg-9 mx-auto my-4">
+            <div class="p-3" style="border: 2px solid #73b6bd; border-radius: 2px;">
+                <h5>ジャンル新規登録</h5>
+                <%= form_with(model: @genre, url: admins_genres_path) do |f| %>
+                    <%= render 'layouts/error_messages', object: f.object %>
+                    <div class="form-row">
+                        <div class="col-lg-3">
+                            <%= f.label :name, "ジャンル名" %>
+                            <%= f.text_field :name, class:"form-control form-control-sm" %>
+                        </div>
+
+                        <div class="mr-3"></div>
+
+                        <div class="col-lg-3">
+                            <%= f.label :genre_status, "公開ステータス" %><br/>
+                            <%= f.radio_button :genre_status, :active %>
+                            <%= f.label :active, "有効" %>
+                            <%= f.radio_button :genre_status, :invaild %>
+                            <%= f.label :invaild, "無効" %>
+                            <%= f.submit "登録", class:"btn btn-sm btn-info col-lg-4" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+
+        <div class="col-lg-9 mx-auto my-4">
+            <h5>ジャンル一覧</h5>
+            <table class="table">
+                <thead style="background-color: #73b6bd;">
+                    <tr>
+                        <th>ID</th>
+                        <th>ジャンル名</th>
+                        <th>公開ステータス</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @genres.each do |genre| %>
+                        <tr>
+                            <td><%= genre.id %></td>
+                            <td>
+                                <%= link_to edit_admins_genre_path(genre) do %>
+                                    <%= genre.name %>
+                                <% end %>
+                            </td>
+                            <td><%= genre.genre_status %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+
+            </table>
+            <%= paginate @genres %>
+        </div>
+
+
+    </div>
+</div>
