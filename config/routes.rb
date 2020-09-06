@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'home/index'
-  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
@@ -56,7 +53,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    get 'home/index' => 'home#index'
+    get 'home' => 'home#index'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :products, only: [:index, :new, :create, :show, :edit, :update] do
       resources :product_comments, only: [:destroy]

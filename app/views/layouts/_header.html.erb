@@ -4,7 +4,7 @@
         <%# 管理者用ヘッダー %>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-3" style="background-color: #000000;">
             <%# ロゴ %>
-            <%= link_to admins_path, class:"navbar-brand mx-2" do %>
+            <%= link_to admins_home_path, class:"navbar-brand mx-2" do %>
                 <div class="admin-logo"></div>
             <% end %>
                 
@@ -22,7 +22,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <%= link_to "商品一覧", admins_products_path, class:"dropdown-item" %>
                             <div class="dropdown-divider"></div>
-                            <%= link_to "商品カテゴリ一覧", admins_categories_path, class:"dropdown-item" %>
+                            <%= link_to "商品カテゴリ一覧", admins_genres_path, class:"dropdown-item" %>
                         </div>
                     </li>
 
@@ -31,9 +31,9 @@
                             受注管理
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <%= link_to "受注未処理一覧", admins_path, class:"dropdown-item" %>
+                            <%= link_to "受注未処理一覧", admins_home_path, class:"dropdown-item" %>
                             <div class="dropdown-divider"></div>
-                            <%= link_to "処理完了済一覧", admins_path, class:"dropdown-item" %>
+                            <%= link_to "処理完了済一覧", admins_home_path, class:"dropdown-item" %>
                         </div>
                     </li>
 
@@ -42,7 +42,7 @@
                             顧客管理
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <%= link_to "顧客一覧", customers_admins_path, class:"dropdown-item" %>
+                            <%= link_to "顧客一覧", admins_customers_path, class:"dropdown-item" %>
                         </div>
                     </li>
 

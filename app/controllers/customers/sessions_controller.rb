@@ -18,7 +18,22 @@ class Customers::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+
+
+  protected
+
+  # 会員ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource)
+    root_path
+  end 
+
+  # 会員ログアウト後のリダイレクト先
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

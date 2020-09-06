@@ -38,7 +38,21 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+
+
+  protected
+  
+  # 管理者登録後リダイレクト先
+  def after_sign_up_path_for(resource)
+    admins_home_path
+  end
+  
+  # 管理者情報更新後のリダイレクト先
+  def after_update_path_for(resource)
+    admins_home_path
+  end
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

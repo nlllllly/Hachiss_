@@ -38,8 +38,22 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  
 
-  # protected
+
+  protected
+  
+  # 会員登録後リダイレクト先
+  def after_sign_up_path_for(resource)
+    root_path
+  end
+  
+  # 会員情報更新後のリダイレクト先
+  def after_update_path_for(resource)
+    customers_my_page_path
+  end
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
