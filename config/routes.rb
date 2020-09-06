@@ -54,11 +54,11 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'home' => 'home#index'
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :products, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :product_comments, only: [:destroy]
     end
-    resources :genres, only: [:index, :create, :edit, :update]
-    resources :producers, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :producers, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
   end

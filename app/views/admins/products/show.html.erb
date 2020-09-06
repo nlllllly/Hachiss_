@@ -1,0 +1,62 @@
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <h3>PRODUCT DETAIL</h3>
+        </div>
+
+        <div class="col-lg-9 mx-auto my-4">
+            <div class="p-4" style="border: 2px solid #5191c2; border-radius: 2px;">
+                <h5>商品詳細</h5>
+                <div class="mt-3"></div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="text-center">
+                            <%= attachment_image_tag @product, :image, :fill, 300, 300, class: "border", fallback: "pic_default/no-image.jpg", size:'300x300' %>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mt-4"></div>
+
+                        <h6>商品名</h6>
+                        <h5><%= @product.name %></h5>
+
+                        <div class="mt-5"></div>
+
+                        <h6>商品価格</h6>
+                        <h5><%= @product.price %> 円</h5>
+
+                        <div class="mt-5"></div>
+
+                        <h6>商品ジャンル</h6>
+                        <p><%= @product.genre.name %></p>
+
+                        <div class="mt-4"></div>
+
+                        <h6>商品説明</h6>
+                        <p><%= @product.description %></p>
+
+                        <div class="mt-4"></div>
+
+                        <h6>生産者名</h6>
+                        <p><%= @product.producer.name %></p>
+
+                        <div class="mt-4"></div>
+
+                        <h6>販売ステータス</h6>
+                        <p><%= @product.sale_status_i18n %></p>
+
+                        <div class="mt-4"></div>
+                        <%= link_to "編集する", edit_admins_product_path, class:"btn btn-sm btn-success col-lg-3" %>
+
+
+                    </div>
+                </div>
+
+                <div class="mt-4"></div>
+                <%= link_to "戻る", admins_products_path, class:"" %>
+            </div>
+        </div>
+
+
+    </div>
+</div>

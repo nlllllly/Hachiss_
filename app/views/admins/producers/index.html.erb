@@ -1,0 +1,46 @@
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <h3>PRODUCERS</h3>
+
+            <div class="text-right">
+                <%= link_to new_admins_producer_path do %>
+                    <div class="btn btn-warning"><i class="fas fa-plus-circle"></i> 生産者登録</div>
+                <% end %>
+            </div>
+
+        </div>
+
+        <div class="col-lg-9 mx-auto my-4">
+            <h5>生産者一覧</h5>
+            <table class="table">
+                <thead style="background-color: #d4778d; color:#FFFFFF; ">
+                    <tr>
+                        <th>ID</th>
+                        <th>生産者名</th>
+                        <th>表示ステータス</th>
+                        <th>登録日</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @producers.each do |producer| %>
+                        <tr>
+                            <td><%= producer.id %></td>
+                            <td>
+                                <%= link_to admins_producer_path(producer) do %>
+                                    <%= producer.name %>
+                                <% end %>
+                            </td>
+                            <td><%= producer.producer_status_i18n %></td>
+                            <td><%= producer.created_at.strftime('%Y/%m/%d') %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+
+            <%= paginate @producers %>
+
+        </div>
+
+    </div>
+</div>

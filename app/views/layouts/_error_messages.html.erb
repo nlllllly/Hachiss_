@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
 	<div id="error_explanation" class="alert alert-danger alert-dismissible fade show" role="alert">
-		<h5 class="alert-heading"> <%= resource.errors.count %> つの項目で入力に誤りがあります</h5>
+		<h5 class="alert-heading"> <%= object.errors.count %> つの項目で入力に誤りがあります</h5>
 		<hr>
 		<ul>
 			<% object.errors.full_messages.each do |message| %>

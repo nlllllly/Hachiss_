@@ -10,7 +10,7 @@ class Admins::GenresController < ApplicationController
     def create
         @genre = Genre.new(genre_params)
         if @genre.save
-            redirect_to request.referer, notice: "ジャンルを追加しました"
+            redirect_to request.referer, notice: "新しくジャンルを追加しました"
         else
             render :index, alert: "保存できませんでした"
         end 
@@ -21,7 +21,7 @@ class Admins::GenresController < ApplicationController
 
     def update
         if @genre.update(genre_params)
-            redirect_to admins_genres_path
+            redirect_to admins_genres_path, notice: "保存しました"
         else
             render :index, alert: "保存できませんでした"
         end
@@ -36,6 +36,6 @@ class Admins::GenresController < ApplicationController
 
     def set_genre
         @genre = Genre.find(params[:id])
-      end
+    end
 
 end

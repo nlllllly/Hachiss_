@@ -1,0 +1,46 @@
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <h3>PRODUCTS</h3>
+
+            <div class="text-right">
+                <%= link_to new_admins_product_path do %>
+                    <div class="btn btn-warning"><i class="fas fa-plus-circle"></i> 商品登録</div>
+                <% end %>
+            </div>
+            
+        </div>
+        
+        <div class="col-lg-9 mx-auto my-4">
+            <h5>商品一覧</h5>
+            <table class="table">
+                <thead style="background-color: #5191c2; color: #FFFFFF;">
+                    <tr>
+                        <th>ID</th>
+                        <th>商品名</th>
+                        <th>販売ステータス</th>
+                        <th>登録日</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @products.each do |product| %>
+                        <tr>
+                            <td><%= product.id %></td>
+                            <td>
+                                <%= link_to admins_product_path(product) do %>
+                                    <%= product.name %>
+                                <% end %>
+                            </td>
+                            <td><%= product.sale_status_i18n %></td>
+                            <td><%= product.created_at.strftime('%Y/%m/%d') %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+
+            </table>
+            <%= paginate @products %>
+        </div>
+
+
+    </div>
+</div>

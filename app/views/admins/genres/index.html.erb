@@ -1,7 +1,7 @@
 <div class="container-fluid my-4">
     <div class="row">
         <div class="col-lg-9 mx-auto">
-            <h3>ジャンル登録 & 一覧</h3>
+            <h3>GENRES & REGISTRATION</h3>
         </div>
 
         <div class="col-lg-9 mx-auto my-4">
@@ -11,20 +11,22 @@
                     <%= render 'layouts/error_messages', object: f.object %>
                     <div class="form-row">
                         <div class="col-lg-3">
-                            <%= f.label :name, "ジャンル名" %>
-                            <%= f.text_field :name, class:"form-control form-control-sm" %>
+                            <div class="field form-group">
+                                <%= f.label :name, "ジャンル名" %>
+                                <%= f.text_field :name, class:"form-control form-control-sm" %>
+                            </div>
                         </div>
-
                         <div class="mr-3"></div>
-
                         <div class="col-lg-3">
-                            <%= f.label :genre_status, "公開ステータス" %><br/>
-                            <%= f.radio_button :genre_status, :active %>
-                            <%= f.label :active, "有効" %>
-                            /
-                            <%= f.radio_button :genre_status, :invaild %>
-                            <%= f.label :invaild, "無効" %>
-                            <%= f.submit "登録", class:"btn btn-sm btn-info col-lg-4" %>
+                            <div class="field form-group">
+                                <%= f.label :genre_status, "公開ステータス" %><br/>
+                                <%= f.radio_button :genre_status, :active %>
+                                <%= f.label :active, "有効" %>
+                                /
+                                <%= f.radio_button :genre_status, :invaild %>
+                                <%= f.label :invaild, "無効" %>
+                                <%= f.submit "登録", class:"btn btn-sm btn-info col-lg-4" %>
+                            </div>
                         </div>
                     </div>
                 <% end %>

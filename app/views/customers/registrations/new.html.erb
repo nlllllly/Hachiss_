@@ -36,7 +36,7 @@
 
             <div class="field form-group col-6">
               <%= f.label :sex, "* 性別" , class:"col-12" %>
-              <%= f.select :sex, Customer.sexes_i18n.invert, {} , autocomplete: "sex", prompt: "選択してください", class:"form-control form-control-sm col-lg-5" %>
+              <%= f.select :sex, Customer.sexes_i18n.invert, {prompt: "選択してください"}, autocomplete: "sex", class:"form-control form-control-sm col-lg-5" %>
               <div class="mb-3"></div>
             </div>
 

@@ -41,7 +41,7 @@ ja:
     # product.rb用
     product:
       sale_status:
-        discountinued: "販売停止"
+        discontinued: "販売停止"
         on_sale: "販売中"
         sold_out: "売り切れ"
 
