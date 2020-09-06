@@ -1,0 +1,39 @@
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-lg-9 mx-auto">
+            <h3>CUSTOMERS</h3>
+        </div>
+
+        <div class="col-lg-9 mx-auto my-4">
+            <h5>会員一覧</h5>
+            <table class="table">
+                <thead style="background-color: #2cb67d; color: #FFFFFF;">
+                    <tr>
+                        <th>ID</th>
+                        <th>会員名</th>
+                        <th>会員ステータス</th>
+                        <th>利用開始日</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @customers.each do |customer| %>
+                        <tr>
+                            <td><%= customer.id %></td>
+                            <td>
+                                <%= link_to admins_customer_path(customer) do %>
+                                    <%= customer.name %>
+                                <% end %>
+                            </td>
+                            <td><%= customer.is_deleted_i18n %></td>
+                            <td><%= customer.created_at.strftime('%Y/%m/%d') %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+
+            </table>
+            <%= paginate @customers %>
+        </div>
+
+
+    </div>
+</div>
