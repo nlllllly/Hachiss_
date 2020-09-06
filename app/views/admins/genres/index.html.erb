@@ -21,6 +21,7 @@
                             <%= f.label :genre_status, "公開ステータス" %><br/>
                             <%= f.radio_button :genre_status, :active %>
                             <%= f.label :active, "有効" %>
+                            /
                             <%= f.radio_button :genre_status, :invaild %>
                             <%= f.label :invaild, "無効" %>
                             <%= f.submit "登録", class:"btn btn-sm btn-info col-lg-4" %>
@@ -50,7 +51,7 @@
                                     <%= genre.name %>
                                 <% end %>
                             </td>
-                            <td><%= genre.genre_status %></td>
+                            <td><%= genre.genre_status_i18n %></td>
                         </tr>
                     <% end %>
                 </tbody>
