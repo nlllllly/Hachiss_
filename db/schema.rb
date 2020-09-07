@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_073237) do
     t.string "last_name"
     t.string "first_name"
     t.integer "sex"
-    t.string "birth_date"
+    t.date "birth_date"
     t.string "postcode"
     t.integer "prefecture_code"
     t.string "address_city"
