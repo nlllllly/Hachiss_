@@ -36,6 +36,15 @@ class Customer < ApplicationRecord
     self.last_name + " " + self.first_name
   end
 
+  # 会員ステータス表示用
+  def active_status
+    if self.is_deleted == "true"
+      "利用停止中"
+    else
+      "利用中"
+    end
+  end
+
          
   # 住所自動入力（jp_prefecture）
   include JpPrefecture

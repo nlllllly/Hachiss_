@@ -1,6 +1,6 @@
 class Admins::CustomersController < ApplicationController
     before_action :authenticate_admin!
-    before_action :set_customer, only: [:edit, :update]
+    before_action :set_customer, only: [:show, :update]
 
     def index
         @customers = Customer.page(params[:page]).per(20)
@@ -9,16 +9,15 @@ class Admins::CustomersController < ApplicationController
     def show
     end
 
-    def edit
-    end
-
     def update
         if @customer.update
             redirect_to admins_customer_path(@customer)
         else
-            render :edit, alert: "保存されませんでした"
+            render :show, alert: "保存されませんでした"
         end
     end
+
+
 
     private
 

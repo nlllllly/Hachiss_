@@ -52,11 +52,17 @@
               %>
               <div class="mb-5"></div>
             </div>
+            
 
+            <div class="field form-group col-12">
+              <%= f.label :phone_number, "* 電話番号（ハイフンなし）", class:"col-12" %>
+              <%= f.text_field :phone_number, autocomplete: "phone_number", placeholder:"08012345678", class:"form-control form-control-sm col-5" %>
+              <div class="mb-3"></div>
+            </div>
 
             <div class="field form-group col-12">
               <%= f.label :postcode, "* 郵便番号（ハイフンなし）", class:"col-12" %>
-              <%= f.text_field :postcode, autocomplete: "postcode", placeholder:"0000000", class:"form-control form-control-sm col-5" %>
+              <%= f.text_field :postcode, autocomplete: "postcode", placeholder:"1001400", class:"form-control form-control-sm col-5" %>
             </div>
 
             <div class="field form-group col-12">
@@ -84,7 +90,7 @@
 
             <div class="field form-group col-12">
               <%= f.label :email, "* メールアドレス", class:"col-12" %>
-              <%= f.email_field :email, autocomplete: "email", placeholder:"Enter email", class:"form-control form-control-sm col-lg-5" %>
+              <%= f.email_field :email, autocomplete: "email", placeholder:"xxxx@nllllll.com", class:"form-control form-control-sm col-lg-5" %>
               <div class="mb-3"></div>
             </div>
 

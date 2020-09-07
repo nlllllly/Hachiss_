@@ -53,7 +53,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'home' => 'home#index'
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :update]
     resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :product_comments, only: [:destroy]
     end
