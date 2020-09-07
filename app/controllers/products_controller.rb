@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    before_action :authenticate_customer!
+    
     before_action :set_product, only: [:show]
 
     def index
@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
     end
 
     def search
+        @product = Product.find(params[:search])
     end
 
 

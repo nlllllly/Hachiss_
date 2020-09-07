@@ -27,4 +27,13 @@ class Product < ApplicationRecord
         (self.price * 1.08).round
     end
 
+    #商品名で検索
+    # def self.search(search)
+        # if search
+            # self.where(['name LIKE ?', "%#{search}%"])
+        # else
+            # self.all
+        # end
+    # end
+
 end

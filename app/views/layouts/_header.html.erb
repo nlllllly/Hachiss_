@@ -84,12 +84,12 @@
             <div class="ml-4">
                 <div class="form-row">
                     <div class="form-inline">
-                    <%# <%= form_with(url: search_path, method: :get, local: true) do |form| %> %>
-                        <%# <%= form.text_field :word, class:"" %> %>
-                        <%# <%= form.button "", type:"submit", class:'btn btn-sm btn-myh' do %> %>
-                        <%# <i class="fas fa-search"></i> %>
-                        <%# <% end %> %>
-                    <%# <% end %> %>
+                    <%= form_with(model: @product, url: products_search_path, method: :get) do |f| %>
+                        <%= f.text_field :search, class:"" %>
+                        <%= f.button "", type:"submit", class:'btn btn-sm btn-hachiss' do %>
+                        <i class="fas fa-search"></i>
+                        <% end %>
+                    <% end %>
                     </div>
                 </div>
             </div>            
