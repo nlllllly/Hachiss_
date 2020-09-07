@@ -22,27 +22,18 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <%= link_to "商品一覧", admins_products_path, class:"dropdown-item" %>
                             <div class="dropdown-divider"></div>
-                            <%= link_to "商品ジャンル一覧", admins_genres_path, class:"dropdown-item" %>
-                        </div>
-                    </li>
-
-                    <li class="nav-item mx-1 dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            受注管理
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <%= link_to "受注未処理一覧", admins_home_path, class:"dropdown-item" %>
+                            <%= link_to "商品登録", new_admins_product_path, class:"dropdown-item" %>
                             <div class="dropdown-divider"></div>
-                            <%= link_to "処理完了済一覧", admins_home_path, class:"dropdown-item" %>
+                            <%= link_to "商品ジャンル一覧 & 登録", admins_genres_path, class:"dropdown-item" %>
                         </div>
                     </li>
 
                     <li class="nav-item mx-1 dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            顧客管理
+                            注文管理
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <%= link_to "顧客一覧", admins_customers_path, class:"dropdown-item" %>
+                            <%= link_to "注文履歴一覧", admins_orders_path, class:"dropdown-item" %>
                         </div>
                     </li>
 
@@ -54,6 +45,15 @@
                             <%= link_to "生産者一覧", admins_producers_path, class:"dropdown-item" %>
                             <div class="dropdown-divider"></div>
                             <%= link_to "生産者追加", new_admins_producer_path, class:"dropdown-item" %>
+                        </div>
+                    </li>
+
+                    <li class="nav-item mx-1 dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            会員管理
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <%= link_to "会員一覧", admins_customers_path, class:"dropdown-item" %>
                         </div>
                     </li>
 
