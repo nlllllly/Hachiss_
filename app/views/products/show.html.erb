@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <%# メイン %>
+        <div class="col-lg-10 py-4">
+
+            <h3>商品詳細</h3>
+            <div class="text-right">ソート用バー</div>
+            <div class="pb-2"></div>
+
+            <div class="p-3" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
+                <div class="row p-4">
+
+                    <div class="col-lg-5 text-center">
+                        <%= attachment_image_tag @product, :image, :fill, 300, 300, class: "border", fallback: "pic_default/no-image.jpg", size:'300x300' %>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="pt-2"></div>
+
+                        <h3><%= @product.name %></h3>
+
+
+                        <div class="">
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <h4><%= @product.price.to_s(:delimited) %> 円</h4>
+                        </div>
+                    
+                    </div>
+
+
+
+                    <div class="col-lg-12">
+                        <div class="mt-5"></div>
+
+
+                        <p>この商品の生産者さんは</p>
+                        <%= link_to  producer_path(@product.producer) do %>
+                            <%= attachment_image_tag @product.producer, :image, :fill, 180, 180, class: "border", fallback: "pic_default/no-image.jpg", size:'180x180' %>
+                        <% end %>
+                        <h6>
+                            <%= link_to  producer_path(@product.producer) do %>
+                                <%= @product.producer.name %>
+                            <% end %>
+                        </h6>
+
+                        「 <%= @product.producer.name %> 」さんの他の商品はこちら
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <%# サイドバー %>
+        <div class="col-lg-2 py-4" style="background-color: #e6ffff;">
+            
+            <div style="height: 500px;"></div>
+
+
+        </div>
+
+
+
+
+    </div>
+</div>

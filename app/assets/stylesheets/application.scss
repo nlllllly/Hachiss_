@@ -41,6 +41,7 @@
 }
 
 
+
 body {
     font-family: 'M PLUS 1p', sans-serif;
     font-size: 14px;
@@ -69,6 +70,21 @@ h3 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+
+
+
+
+// オリジナルbtn
+.btn-hachiss {
+    color: #272343;
+    background-color: #ffd803;
+}
+.btn-hachiss:hover {
+    color: #272343;
+    box-shadow: 2px 1px 2px 1px #e7c500;
+    transition: .2s;
 }
 
 
