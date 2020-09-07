@@ -22,8 +22,9 @@ class Product < ApplicationRecord
         sold_out: 2
     }
 
-    # 消費税
-    def tax
+    # 消費税を加えた商品価格
+    def add_tax_price
+        (self.price * 1.08).round
     end
 
 end

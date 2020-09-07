@@ -5,52 +5,148 @@
         <div class="col-lg-10 py-4">
 
             <h3>商品詳細</h3>
-            <div class="text-right">ソート用バー</div>
+
             <div class="pb-2"></div>
 
             <div class="p-3" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
+                
+                <%# 商品の詳細 %>
                 <div class="row p-4">
-
-                    <div class="col-lg-5 text-center">
-                        <%= attachment_image_tag @product, :image, :fill, 300, 300, class: "border", fallback: "pic_default/no-image.jpg", size:'300x300' %>
+                    <div class="col-lg-6 text-center">
+                        <div class="pt-4"></div>
+                        <%= attachment_image_tag @product, :image, :fill, 320, 320, class: "border", fallback: "pic_default/no-image.jpg", size:'320x320' %>
                     </div>
 
-                    <div class="col-lg-7">
-                        <div class="pt-2"></div>
-
-                        <h3><%= @product.name %></h3>
-
-
-                        <div class="">
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <h4><%= @product.price.to_s(:delimited) %> 円</h4>
+                    <div class="col-lg-6">
+                        <%# <div clas="pt-4"></div> %>
+                        <div class="pt-5 pl-2">
+                            <h3><%= @product.name %></h3>
                         </div>
-                    
+
+                        <div class="text-right pr-2">
+                            <h4><%= @product.add_tax_price.to_s(:delimited) %> 円</h4>
+                        </div>
+
+                        <div class="pt-3"></div>
+
+                        <p class="btn btn-sm btn-warning col-lg-6">お気に入り登録する <i class="far fa-star"></i></p>
+                        <p class="btn btn-sm btn-info col-lg-6">お気に入り登録済み <i class="fas fa-star"></i></p>
+
+                        <div class="pt-5"></div>
+                        個数選択
+                        <p class="btn btn-danger col-lg-6">カートに入れる</p>
+
                     </div>
 
+                </div>
 
-
+                <%# 商品説明 & コメント %>
+                <div class="row p-4">
                     <div class="col-lg-12">
-                        <div class="mt-5"></div>
+                        <div class="pl-2">
+                            <p>商品の説明</p>
+                        </div>
+                        <div class="pl-5">
+                            <p><%= @product.description %><p>
+                        </div>
+
+                        <div class="pt-3"></div>
+
+                        <%# ここにコメント関連 %>
+                        <div class="pl-2">
+                            <p>商品へのコメント</p>
+                        </div>
+
+                        <div class="pt-3"></div>
+
+                        <div class="pl-2">
+                            <p>商品へのコメントをする</p>
+                        </div>
+
+                    </div>         
+
+                </div>
+                
+                <div class="pt-5"></div>
+                <div class="border-top border-secondary"></div>
+                <div class="pb-5"></div>
+
+                <%# 商品の生産者 %>
+                <div class="row p-4">
+                    <div class="col-lg-8">
+                        <div class="pt-5"></div>
+                        <h5>この商品の生産者さんは...</h5>
+
+                        <div class="text-center py-4">
+                            <h3>「 <%= @product.producer.name %> 」さん</h3>
+                        </div>
 
 
-                        <p>この商品の生産者さんは</p>
-                        <%= link_to  producer_path(@product.producer) do %>
-                            <%= attachment_image_tag @product.producer, :image, :fill, 180, 180, class: "border", fallback: "pic_default/no-image.jpg", size:'180x180' %>
-                        <% end %>
-                        <h6>
-                            <%= link_to  producer_path(@product.producer) do %>
-                                <%= @product.producer.name %>
+                        <div class="text-center p-4">
+                            <%= link_to producer_path(@product.producer) do %>
+                                <h6 class="btn btn-lg btn-hachiss col-lg-8">詳細を見る</h6>
                             <% end %>
-                        </h6>
+                        </div>
 
-                        「 <%= @product.producer.name %> 」さんの他の商品はこちら
+                    </div>
+                    <div class="col-lg-4">
+
+                        <div class="text-center">
+                            <%= link_to  producer_path(@product.producer) do %>
+                                <%= attachment_image_tag @product.producer, :image, :fill, 200, 200, class: "border", fallback: "pic_default/no-image.jpg", size:'200x200' %>
+                            <% end %>
+                        </div>
 
 
+                        <div class="text-center">
+                            <p class="btn btn-sm btn-secondary col-lg-8">フォローする <i class="fas fa-user-plus"></i></p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <p class="btn btn-sm btn-info col-lg-8">フォロー中 <i class="fas fa-user-check"></i></p>
+                        </div>
 
 
                     </div>
+                </div>
+
+                <div class="row p-4">
+                    <div class="col-lg-12">
+                        <p>「 <%= @product.producer.name  %> 」さんの他の商品はこちら</p>
+                    
+                        <%# 生産者の商品 %>
+                        <div class="col-lg-3 pt-3">
+                            <div class="text-center">
+                                <%# <%= link_to product_path(product) do %> %>
+                                    <%# <%= attachment_image_tag product, :image, :fill, 180, 180, class: "border", fallback: "pic_default/no-image.jpg", size:'180x180' %> %>
+                                <%# <% end %> %>
+                            </div>
+
+                            <div class="pt-2"></div>
+
+                            <div class="text-left">
+                                <%# <%= link_to product_path(product) do %> %>
+                                    <%# <h6><%= product.name %></h6> %>
+                                <%# <% end %> %>
+                            </div>
+
+                            <div class="">
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <%# <%= product.price.to_s(:delimited) %> 円 %>
+                            </div>
+
+                            <div class="action">
+                                <%# <%= link_to "詳細をみる", product_path(product), class:"btn btn-sm btn-hachiss col-lg-12" %> %>
+                            </div>
+
+                            <div class="pt-3"></div>
+                            <div class="border-bottom border-secondary"></div>
+                            <div class="pt-3"></div>
+                        </div>
+                        <%# 生産者の商品 終わり %>
+                    </div>
+
 
                 </div>
             </div>
