@@ -130,22 +130,19 @@
           </div>
         <% end %>
 
+      <%= link_to "戻る", :back %>
+
       </div>
     </div>
     <%# アカウント編集フォーム終了 %>
 
-    <%# アカウント削除 %>
-    <div class="col-12">
-      <h3>アカウントの削除</h3>
-      <div class="pt-3"></div>
-      <p>※ アカウントを削除する場合はこちらから
-      <div class="actions form-group col-12 text-center">
-        <%= button_to "アカウントを削除する", registration_path(resource_name), class:"btn btn-danger col-lg-9", data: { confirm: "本当に削除してもいいですか？" }, method: :delete %>
-      </div>
-    </div>
-    <%# アカウント削除終了 %>
 
-    <%= link_to "Back", :back %>
+    <%# <h3>アカウントの削除</h3>
+    <%# <div class="pt-3"></div> %>
+    <%# <p>※ アカウントを削除する場合はこちらから %>
+    <%# <div class="actions form-group col-12 text-center"> %>
+      <%# <%= button_to "アカウントを削除する", registration_path(resource_name), class:"btn btn-danger col-lg-9", data: { confirm: "本当に削除してもいいですか？" }, method: :delete %>
+    <%# </div> %>
 
   </div>
 </div>

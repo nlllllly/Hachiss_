@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
     before_action :authenticate_customer!
-    # before_action :set_customer, only: [:show, :update]
+    before_action :set_customer, only: [:show]
 
     # マイページ
     def show
@@ -19,6 +19,6 @@ class CustomersController < ApplicationController
 
     private
     def set_customer
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
     end
 end

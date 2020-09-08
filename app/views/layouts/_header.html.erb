@@ -80,19 +80,21 @@
             <%# ロゴ %>
             <%= link_to root_path, class:"navbar-brand mx-2" do %>
                 <div class="logo"></div>
-            <% end %>   
+            <% end %>
+            <%# 検索 %>
             <div class="ml-4">
                 <div class="form-row">
                     <div class="form-inline">
-                    <%= form_with(model: @product, url: products_search_path, method: :get) do |f| %>
-                        <%= f.text_field :search, class:"" %>
-                        <%= f.button "", type:"submit", class:'btn btn-sm btn-hachiss' do %>
-                        <i class="fas fa-search"></i>
-                        <% end %>
-                    <% end %>
+                    <%# <%= form_with(url: products_search_path, method: :get, local: true) do |f| %> %>
+                        <%# <%= f.text_field :search, class:"form-control form-control-sm" %> %>
+                        <%# <%= f.button "", type:"submit", name: nil, class:'btn btn-sm btn-hachiss' do %>
+                            <i class="fas fa-search"></i>
+                        <%# <% end %> %> %>
+                    <%# <% end %> %>
                     </div>
                 </div>
-            </div>            
+            </div>
+           <%# 検索 終わり %>
                 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

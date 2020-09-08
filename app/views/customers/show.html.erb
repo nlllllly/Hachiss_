@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="row p-4">
+            
+        <%# マイページ %>
+        <div class="col-lg-11 mx-auto">
+            <div class="p-5 my-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
+
+                <h2>マイページ</h2>
+                <div class="pt-4"></div>
+
+
+                <h4>会員情報</h4>
+
+                登録メールアドレス：
+                <p><%= @customer.email %></p>
+
+                名前（カナ）：
+                <p><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></p>
+
+                名前（漢字）：
+                <p><%= @customer.full_name %></p>
+
+                性別：
+                <p><%= @customer.sex_i18n %></p>
+
+                電話番号：
+                <p><%= @customer.phone_number %></p>
+
+                生年月日：
+                <p><%= @customer.birth_date %></p>
+
+                郵便番号：
+                <p><%= @customer.postcode %></p>
+
+                都道府県：
+                <p><%= @customer.prefecture_name %></p>
+
+                住所：
+                <p><%= @customer.address_city %> <%= @customer.address_street %> <%= @customer.address_building %></p>
+
+                <%= link_to "会員情報を編集する", edit_customer_registration_path, class:"btn btn-hachiss" %>
+
+
+                <div class="pt-4"></div>
+                <div class="border-bottom border-secondary"></div>
+                <div class="pt-4"></div>
+
+
+                <h4>配送先</h4>
+
+                <div class="pt-4"></div>
+                <div class="border-bottom border-secondary"></div>
+                <div class="pt-4"></div>
+
+                <h4>フォロー中の生産者さん</h4>
+
+                <div class="pt-4"></div>
+                <div class="border-bottom border-secondary"></div>
+                <div class="pt-4"></div>
+
+                <h4>お気に入り商品一覧</h4>
+
+
+                <div class="pt-4"></div>
+                <div class="border-bottom border-secondary"></div>
+                <div class="pt-4"></div>
+
+
+                <h4>会員を退会する</h4>
+                <div class="p-3">
+                    <p>退会する場合は、以下のボタンから退会手続きを行ってください。</p>
+                    <div class="text-center">
+                        <%= link_to "退会する", customers_unsubscribe_path, class:"btn btn-danger col-4" %>
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+</div>

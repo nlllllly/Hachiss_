@@ -28,12 +28,12 @@ class Product < ApplicationRecord
     end
 
     #商品名で検索
-    # def self.search(search)
-        # if search
-            # self.where(['name LIKE ?', "%#{search}%"])
-        # else
-            # self.all
-        # end
-    # end
+    def self.search(search)
+        if search
+            self.where(['name LIKE ?', "%#{search}%"])
+        else
+            self.all
+        end
+    end
 
 end

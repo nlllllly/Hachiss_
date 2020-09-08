@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     end
 
     def search
-        @product = Product.find(params[:search])
+        # @search_products = Product.all.page(params[:page]).search(params[:search])
     end
 
 
