@@ -8,9 +8,34 @@
                 <h2>配送先編集</h2>
                 <div class="pt-4"></div>
 
-
-
+                <%= form_with(model: @shipping, url: shippings_path) do |f| %>
                 
+                    <%= f.label last_name_kana, "姓（カナ）" %>
+                    <%= f.text_field last_name_kana %>
+                    <%= f.label last_name_kana, "名（カナ）" %>
+                    <%= f.text_field last_name_kana %>
+
+                    <%= f.label last_name, "姓（漢字）" %>
+                    <%= f.text_field last_name %>
+                    <%= f.label last_name, "名（漢字）" %>
+                    <%= f.text_field last_name %>
+
+                    <%= f.label postcode, "郵便番号" %>
+                    <%= f.text_field postcode %>
+
+                    <%= f.label prefecture_name, "都道府県" %>
+                    <%= f.text_field prefecture_code %>
+
+                    <%= f.label address_city, "市区町村" %>
+                    <%= f.text_field address_city %>
+
+                    <%= f.label address_street, "番地" %>
+                    <%= f.text_field address_street %>
+
+                    <%= f.label address_building, "建物名" %>
+                    <%= f.text_field address_building %>
+
+                <% end %>
 
             </div>
         </div>

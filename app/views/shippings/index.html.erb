@@ -8,11 +8,23 @@
                 <h2>配送先一覧</h2>
                 <div class="pt-4"></div>
 
+                <% @shippings.each do |shipping| %>
 
+                    <p><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></p>
+
+                    <p><%= shipping.full_name %></p>
+
+                    <p><%= shipping.postcode %></p>
+
+                    <p><%= shipping.shipping_full_address %></p>
+
+                <% end %>
 
             </div>
-        </div>
 
+            <%= link_to "戻る", customers_my_page_path %>
+
+        </div>
 
     </div>
 </div>
