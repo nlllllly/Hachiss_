@@ -13,7 +13,6 @@ class ShippingsController < ApplicationController
         if @shipping.save
             redirect_to shippings_path
         else
-            @shippings = Shipping.page(params[:page]).per(10)
             render :index, alert: "保存できませんでした"
         end
     end
@@ -23,7 +22,7 @@ class ShippingsController < ApplicationController
 
     def update
         if @shipping.update(shipping_params)
-            redirect_to shippings_path
+            redirect_to shippings_path, notice: "変更を保存しました"
         else
             render :edit, alert: "保存できませんでした"
         end

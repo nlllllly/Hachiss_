@@ -8,8 +8,8 @@
                 <h2>配送先一覧</h2>
                 <div class="pt-4"></div>
 
-                <table class="table table-bordered" style="color: #FFFFFF; background-color: #524d75;">
-                    <thead>
+                <table class="table table-bordered">
+                    <thead style="color: #FFFFFF; background-color: #524d75;">
                         <tr>
                             <th>氏名（カナ）</th>
                             <th>氏名（漢字）</th>
@@ -18,14 +18,14 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="color: #524d75; background-color: #fffffe;">
                         <% @shippings.each do |shipping| %>
                             <tr>
                                 <td><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></td>
                                 <td><%= shipping.full_name %></td>
                                 <td><%= shipping.postcode %></td>
                                 <td><%= shipping.shipping_full_address %></td>
-                                <td>編集・削除</td>
+                                <td><%= link_to "編集", edit_shipping_path(shipping), class:"btn btn-sm btn-success" %></td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -33,9 +33,7 @@
             
             </div>
         </div>
-
-
-
+        
 
         <%# 配送先一覧 %>
         <div class="col-lg-11 mx-auto">
@@ -52,8 +50,8 @@
                             <%= f.text_field :last_name_kana, class:"form-control form-control-sm col-lg-10" %>
                         </div>
                         <div class="field form-group col-6">
-                            <%= f.label :last_name_kana, "名（カナ）", class:"col-12" %>
-                            <%= f.text_field :last_name_kana, class:"form-control form-control-sm col-lg-10" %>
+                            <%= f.label :first_name_kana, "名（カナ）", class:"col-12" %>
+                            <%= f.text_field :first_name_kana, class:"form-control form-control-sm col-lg-10" %>
                         </div>
 
                         <div class="field form-group col-6">
@@ -61,8 +59,8 @@
                             <%= f.text_field :last_name, class:"form-control form-control-sm col-lg-10" %>
                         </div>
                         <div class="field form-group col-6">
-                            <%= f.label :last_name, "名（漢字）", class:"col-12" %>
-                            <%= f.text_field :last_name, class:"form-control form-control-sm col-lg-10" %>
+                            <%= f.label :first_name, "名（漢字）", class:"col-12" %>
+                            <%= f.text_field :first_name, class:"form-control form-control-sm col-lg-10" %>
                             <div class="mb-3"></div>
                         </div>
 
@@ -73,7 +71,7 @@
                         </div>
                         <div class="field form-group col-12">
                             <%= f.label :prefecture_name, "* 都道府県", class:"col-12" %>
-                            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, { prompt: '選択してください' }, autocomplete: "prefecture_name", class:"form-control form-control-sm col-lg-3" %>
+                            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, autocomplete: "prefecture_name", class:"form-control form-control-sm col-lg-3" %>
                         </div>
                         <div class="field form-group col-lg-6">
                             <%= f.label :address_city, "市区町村", class:"col-12"  %>
@@ -96,7 +94,7 @@
                     </div>
                 <% end %>
 
-                <%= link_to "戻る", customers_my_page_path %>
+                <%= link_to "マイページへ戻る", customers_my_page_path %>
 
             </div>
 

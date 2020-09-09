@@ -10,8 +10,8 @@ class Admins::CustomersController < ApplicationController
     end
 
     def update
-        if @customer.update
-            redirect_to admins_customer_path(@customer)
+        if @customer.update(customer_params)
+            redirect_to admins_customer_path(@customer), notice: "利用状況の変更を保存しました"
         else
             render :show
         end
@@ -20,7 +20,9 @@ class Admins::CustomersController < ApplicationController
 
 
     private
-
+    def customer_params
+        params.require(:customer).permit(:is_deleted)
+    end
 
     def set_customer
         @customer = Customer.find(params[:id])
