@@ -11,8 +11,8 @@
                 <table class="table table-bordered">
                     <thead style="color: #FFFFFF; background-color: #524d75;">
                         <tr>
-                            <th>氏名（カナ）</th>
                             <th>氏名（漢字）</th>
+                            <th>氏名（カナ）</th>
                             <th>郵便番号</th>
                             <th>住所</th>
                             <th></th>
@@ -21,8 +21,8 @@
                     <tbody style="color: #524d75; background-color: #fffffe;">
                         <% @shippings.each do |shipping| %>
                             <tr>
-                                <td><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></td>
                                 <td><%= shipping.full_name %></td>
+                                <td><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></td>
                                 <td><%= shipping.postcode %></td>
                                 <td><%= shipping.shipping_full_address %></td>
                                 <td><%= link_to "編集", edit_shipping_path(shipping), class:"btn btn-sm btn-success" %></td>
