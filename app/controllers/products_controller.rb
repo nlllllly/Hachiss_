@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
     before_action :set_product, only: [:show]
 
     def index
-        @products = Product.page(params[:page]).per(20)
+        # 販売停止中以外を表示する
+        @products = Product.where.not(sale_status: 0).page(params[:page]).per(20)
     end
     
     def show

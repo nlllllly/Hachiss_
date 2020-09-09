@@ -3,8 +3,8 @@ class GenresController < ApplicationController
     before_action :set_genre, only: [:show]
 
     def show
-        # ジャンルidに所属し、かつ「販売中」か「売り切れ」の商品を表示する
-        @products = @genre.products.where(genre_id: @genre.id, sale_status: 1 || 2).page(params[:page]).per(20)
+        # 特定の「ジャンルid」に所属し、かつ「販売停止中」になっていない商品を表示する
+        @products = @genre.products.where(genre_id: @genre.id).where.not(sale_status: 0).page(params[:page]).per(20)
     end
     
     
