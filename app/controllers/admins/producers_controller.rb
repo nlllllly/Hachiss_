@@ -35,9 +35,9 @@ class Admins::ProducersController < ApplicationController
     
     def destroy
         if @producer.destroy
-            redirect_to admins_producers_path
+            redirect_to admins_producers_path, notice: "生産者を削除しました"
         else
-            render :show, alert: "削除できませんでした"
+            render :index, alert: "削除できませんでした"
         end
     end
     

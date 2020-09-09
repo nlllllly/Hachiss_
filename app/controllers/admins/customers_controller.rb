@@ -13,7 +13,7 @@ class Admins::CustomersController < ApplicationController
         if @customer.update
             redirect_to admins_customer_path(@customer)
         else
-            render :show, alert: "保存されませんでした"
+            render :show
         end
     end
 

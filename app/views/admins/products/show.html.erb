@@ -23,7 +23,7 @@
                         <div class="mt-5"></div>
 
                         <h6>商品価格</h6>
-                        <h5><%= @product.price %> 円</h5>
+                        <h5><%= @product.add_tax_price.to_s(:delimited) %> 円 /（税別 <%= @product.price.to_s(:delimited) %> 円）</h5>
 
                         <div class="mt-5"></div>
 
@@ -42,12 +42,13 @@
 
                         <div class="mt-4"></div>
 
-                        <h6>販売ステータス</h6>
+                        <h6>販売状況</h6>
                         <p><%= @product.sale_status_i18n %></p>
 
                         <div class="mt-4"></div>
-                        <%= link_to "編集する", edit_admins_product_path, class:"btn btn-sm btn-success col-lg-3" %>
-
+                        <%= link_to "編集する", edit_admins_product_path, class:"btn btn-sm btn-success col-lg-5" %>
+                        <div class="mt-4"></div>
+                        <%= link_to "商品を削除する", admins_product_path(@product), class:"btn btn-sm btn-danger col-lg-5", method:"delete", data:{ confirm: "本当に削除しますか？" } %>
 
                     </div>
                 </div>

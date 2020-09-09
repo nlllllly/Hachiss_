@@ -19,7 +19,7 @@
                         <div class="mr-3"></div>
                         <div class="col-lg-3">
                             <div class="field form-group">
-                                <%= f.label :genre_status, "公開ステータス" %><br/>
+                                <%= f.label :genre_status, "公開状況" %><br/>
                                 <%= f.radio_button :genre_status, :active %>
                                 <%= f.label :active, "有効" %>
                                 /
@@ -42,6 +42,7 @@
                         <th>ID</th>
                         <th>ジャンル名</th>
                         <th>公開ステータス</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +55,7 @@
                                 <% end %>
                             </td>
                             <td><%= genre.genre_status_i18n %></td>
+                            <td><%= link_to "削除する", admins_genre_path(genre), class:"btn btn-sm btn-danger", method:"delete", data:{ confirm: "本当に削除しますか？" } %></td>
                         </tr>
                     <% end %>
                 </tbody>

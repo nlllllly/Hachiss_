@@ -15,7 +15,7 @@ class Admins::ProductsController < ApplicationController
         if @product.save
             redirect_to admins_product_path(@product)
         else
-            render :new , alert: "保存できませんでした"
+            render :new
         end
     end
     
@@ -35,9 +35,9 @@ class Admins::ProductsController < ApplicationController
 
     def destroy
         if @product.destroy
-            redirect_to admins_products_path
+            redirect_to admins_products_path, notice: "商品を削除しました"
         else
-            render :show, alert: "削除できませんでした"
+            render :index, alert: "削除できませんでした"
         end
     end
     

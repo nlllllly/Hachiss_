@@ -8,3 +8,15 @@ $(function() {
       },
     });
   });
+
+
+$(function() {
+    return $('#shipping_postcode').jpostal({
+      postcode: ['#shipping_postcode'],
+      address: {
+        '#shipping_prefecture_code': '%3',
+        '#shipping_address_city': '%4',
+        '#shipping_address_street': '%5%6%7',
+      },
+    });
+  });

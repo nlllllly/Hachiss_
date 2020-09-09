@@ -8,21 +8,98 @@
                 <h2>配送先一覧</h2>
                 <div class="pt-4"></div>
 
-                <% @shippings.each do |shipping| %>
+                <table class="table table-bordered" style="color: #FFFFFF; background-color: #524d75;">
+                    <thead>
+                        <tr>
+                            <th>氏名（カナ）</th>
+                            <th>氏名（漢字）</th>
+                            <th>郵便番号</th>
+                            <th>住所</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @shippings.each do |shipping| %>
+                            <tr>
+                                <td><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></td>
+                                <td><%= shipping.full_name %></td>
+                                <td><%= shipping.postcode %></td>
+                                <td><%= shipping.shipping_full_address %></td>
+                                <td>編集・削除</td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
 
-                    <p><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></p>
 
-                    <p><%= shipping.full_name %></p>
 
-                    <p><%= shipping.postcode %></p>
 
-                    <p><%= shipping.shipping_full_address %></p>
+        <%# 配送先一覧 %>
+        <div class="col-lg-11 mx-auto">
+            <div class="p-5 my-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
 
+                <h2>配送先新規登録</h2>
+                <div class="pt-4"></div>
+                <%= form_with(model: @shipping, url: shippings_path) do |f| %>
+                    <%= render 'layouts/error_messages', object: f.object %>
+
+                    <div class="form-row">
+                        <div class="field form-group col-6">
+                            <%= f.label :last_name_kana, "姓（カナ）", class:"col-12" %>
+                            <%= f.text_field :last_name_kana, class:"form-control form-control-sm col-lg-10" %>
+                        </div>
+                        <div class="field form-group col-6">
+                            <%= f.label :last_name_kana, "名（カナ）", class:"col-12" %>
+                            <%= f.text_field :last_name_kana, class:"form-control form-control-sm col-lg-10" %>
+                        </div>
+
+                        <div class="field form-group col-6">
+                            <%= f.label :last_name, "姓（漢字）", class:"col-12" %>
+                            <%= f.text_field :last_name, class:"form-control form-control-sm col-lg-10" %>
+                        </div>
+                        <div class="field form-group col-6">
+                            <%= f.label :last_name, "名（漢字）", class:"col-12" %>
+                            <%= f.text_field :last_name, class:"form-control form-control-sm col-lg-10" %>
+                            <div class="mb-3"></div>
+                        </div>
+
+
+                        <div class="field form-group col-12">
+                            <%= f.label :postcode, "郵便番号", class:"col-12" %>
+                            <%= f.text_field :postcode, class:"form-control form-control-sm col-lg-3" %>
+                        </div>
+                        <div class="field form-group col-12">
+                            <%= f.label :prefecture_name, "* 都道府県", class:"col-12" %>
+                            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, { prompt: '選択してください' }, autocomplete: "prefecture_name", class:"form-control form-control-sm col-lg-3" %>
+                        </div>
+                        <div class="field form-group col-lg-6">
+                            <%= f.label :address_city, "市区町村", class:"col-12"  %>
+                            <%= f.text_field :address_city, class:"form-control form-control-sm col-lg-10" %>
+                        </div>
+                        <div class="field form-group col-lg-6">
+                            <%= f.label :address_street, "番地", class:"col-12"  %>
+                            <%= f.text_field :address_street, class:"form-control form-control-sm col-lg-10" %>
+                        </div>
+                        <div class="field form-group col-lg-6">
+                                <%= f.label :address_building, "建物名", class:"col-12"  %>
+                                <%= f.text_field :address_building, class:"form-control form-control-sm col-lg-10" %>
+                            <div class="pb-4"></div>
+                        </div>
+
+                        <div class="action col-lg-12 text-center">
+                            <%= f.submit "登録", class:"btn btn-sm btn-info col-lg-3" %>
+                            <div class="pb-4"></div>
+                        </div>
+                    </div>
                 <% end %>
+
+                <%= link_to "戻る", customers_my_page_path %>
 
             </div>
 
-            <%= link_to "戻る", customers_my_page_path %>
 
         </div>
 

@@ -31,9 +31,9 @@
                         <p><%= @producer.producer_status_i18n %></p>
 
                         <div class="mt-4"></div>
-                        <%= link_to "編集する", edit_admins_producer_path, class:"btn btn-sm btn-success col-lg-3" %>
-
-
+                        <%= link_to "編集する", edit_admins_producer_path, class:"btn btn-sm btn-success col-lg-5" %>
+                        <div class="mt-4"></div>
+                        <%= link_to "生産者を削除する", admins_producer_path(@producer), class:"btn btn-sm btn-danger col-lg-5", method:"delete", data:{ confirm: "本当に削除しますか？" } %>
                     </div>
                 </div>
 

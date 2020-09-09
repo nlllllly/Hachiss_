@@ -17,6 +17,7 @@
                 <thead style="background-color: #d4778d; color:#FFFFFF; ">
                     <tr>
                         <th>ID</th>
+                        <th></th>
                         <th>生産者名</th>
                         <th>表示ステータス</th>
                         <th>登録日</th>
@@ -26,6 +27,7 @@
                     <% @producers.each do |producer| %>
                         <tr>
                             <td><%= producer.id %></td>
+                            <td><%= attachment_image_tag producer, :image, :fill, 50, 50, class: "border", fallback: "pic_default/no-image.jpg", size:'50x50' %></td>
                             <td>
                                 <%= link_to admins_producer_path(producer) do %>
                                     <%= producer.name %>

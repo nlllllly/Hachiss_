@@ -3,15 +3,17 @@ class ShippingsController < ApplicationController
     before_action :set_shipping, only: [:edit, :update, :destroy]
 
     def index
-        @shippings = Shipping.page(params[:page]).per(20)
+        @shippings = Shipping.page(params[:page]).per(10)
         @shipping = Shipping.new
     end
-
+    
     def create
         @shipping = Shipping.new(shipping_params)
+        @shipping.customer_id = current_customer.id
         if @shipping.save
             redirect_to shippings_path
         else
+            @shippings = Shipping.page(params[:page]).per(10)
             render :index, alert: "保存できませんでした"
         end
     end
@@ -35,9 +37,11 @@ class ShippingsController < ApplicationController
     private
     def shipping_params
         params.require(:shipping).permit(
+            :customer_id,
             :last_name_kana,
             :first_name_kana,
-            :last_name, :first_name,
+            :last_name,
+            :first_name,
             :postcode,
             :prefecture_code,
             :prefecture_name,

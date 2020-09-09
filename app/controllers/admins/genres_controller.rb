@@ -1,6 +1,6 @@
 class Admins::GenresController < ApplicationController
     before_action :authenticate_admin!
-    before_action :set_genre, only: [:edit, :update]
+    before_action :set_genre, only: [:edit, :update, :destroy]
 
     def index
         @genres = Genre.page(params[:page]).per(20)
@@ -24,6 +24,14 @@ class Admins::GenresController < ApplicationController
             redirect_to admins_genres_path, notice: "保存しました"
         else
             render :index, alert: "保存できませんでした"
+        end
+    end
+    
+    def destroy
+        if @genre.destroy
+            redirect_to admins_genres_path, notice: "削除しました"
+        else
+            render :index, alert: "削除できませんでした"
         end
     end
 
