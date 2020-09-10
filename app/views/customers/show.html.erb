@@ -93,7 +93,6 @@
                 </div>
                 <%# 会員情報 終わり %>
 
-
                 <div class="pt-4"></div>
                 <div class="border-bottom border-secondary"></div>
                 <div class="pb-4"></div>
@@ -104,7 +103,9 @@
                     <h4>配送先情報</h4>
                     <div class="pl-1">
                         <p>現在登録されている配送先は「 <%= @customer.shippings.count %> 件 」です。</p>
-                        <%= link_to "配送先の確認・登録はこちら", shippings_path, class:"btn btn-success col-lg-5" %>
+                        <div class="text-right">
+                            <%= link_to "配送先の確認・登録はこちら", shippings_path, class:"btn btn-success col-lg-4" %>
+                        </div>
                     </div>
                 </div>
                 <%# 配送先 終わり %>

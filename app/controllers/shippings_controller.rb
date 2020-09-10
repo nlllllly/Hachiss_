@@ -4,6 +4,9 @@ class ShippingsController < ApplicationController
 
     def index
         @shippings = Shipping.page(params[:page]).per(10)
+    end
+    
+    def new
         @shipping = Shipping.new
     end
     

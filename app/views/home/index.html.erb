@@ -7,19 +7,16 @@
 <!-- メイン動画用 終わり -->
 
 
-
 <div class="container-fluid">
 
+    <!-- 見出し と アイコン -->
     <div class="row">
-
-        <!-- 見出し と アイコン -->
         <div style="position: absolute; top: 50%; left: 2%; width: 70%;">
             <h1>Hachijo-Island.</h1>
         </div>
-        <div style="position: absolute; top: 50%; right: 2%; width: 30%; height: auto;">
-            <%= image_tag 'logos/hachijo-main.png', id: "main-fadein", style: "width: 90%; height: auto;", oncontextmenu: "return false;", onselectstart:"return false;", onmousedown: "return false;" %>
+        <div style="position: absolute; top: 46%; right: 2%; width: 31%; height: auto;">
+            <%= image_tag 'logos/hachijo-main.png', id:"main-fadein", style:"width: 100%; height: auto;", oncontextmenu: "return false;", onselectstart:"return false;", onmousedown: "return false;" %>
         </div>
-
     </div>
 
 
@@ -27,28 +24,25 @@
     <div class="row py-5 px-3" style="background-color: #fffffe; height: 300px;">
         <div class="col-12 pb-3">
             <h2>About</h2>
-
             <div class="row">
                 <div class="col-lg-9 mx-auto">
                     <p>このサイトは「八丈島」の商品に特化したオンラインショップです。</p>
                 </div>
             </div>
-
         </div>
     </div>
-
 
 
     <%# Products %>
     <div class="row py-5 px-3" style="background-color: #e3f6f5;">
         <div class="col-lg-12 pb-3">
             <h2>Products</h2>
+            <div class="pt-4"></div>
             <div class="ml-4">
                 <p>八丈島産の商品が毎日続々入荷中！</p>
             </div>
 
-            <div class="row p-4 m-4" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
-
+            <div class="row p-4 m-4" style="background-color: #fffffe; border: 3px solid #272343; border-radius: 2px;">
                 <div class="col-12">
                     <h6>新着商品！</h6>
                 </div>
@@ -75,9 +69,12 @@
                     </div>
                 <% end %>
 
-                <div class="col-lg-2 py-3">
-                    <div class="text-center">
-                        <%= link_to "さらに見る", products_path, class:"" %>
+                <div class="col-lg-2 py-3 my-auto">
+                    <div class="align-items-center">
+                        <%= link_to products_path, class:"btn btn-outline-info col-12 px-3" do %>
+                            <i class="fas fa-arrow-circle-right" style="font-size: 40px;"></i><br>
+                            さらに見る
+                        <% end %>
                     </div>
                 </div>
 
@@ -92,20 +89,22 @@
     <div class="row py-5 px-3" style="background-color: #ffd803;">
         <div class="col-lg-12 pb-3">
             <h2>Ranking</h2>
-
+            <div class="pt-4"></div>
             <div class="ml-4">
                 <p>人気商品をいち早くチェック！</p>
             </div>
 
-            <div class="row p-4 m-4" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
-
+            <div class="row p-4 m-4" style="background-color: #fffffe; border: 3px solid #272343; border-radius: 2px;">
                 <div class="col-12">
                     <h6>人気商品ランキング！</h6>
                 </div>
 
-                <div class="col-lg-2 py-3">
-                    <div class="text-center">
-                        <%= link_to "さらに見る", products_path, class:"" %>
+                <div class="col-lg-2 py-3 my-auto">
+                    <div class="align-items-center">
+                        <%= link_to products_path, class:"btn btn-outline-info col-12 px-3" do %>
+                            <i class="fas fa-arrow-circle-left" style="font-size: 40px;"></i><br>
+                            さらに見る
+                        <% end %>
                     </div>
                 </div>
 
@@ -127,7 +126,7 @@
                         <div class="text-right">
                             <p><%= product.add_tax_price.to_s(:delimited) %> 円</p>
                         </div>
-                        <%= link_to "詳細をみる", product_path(product), class:"btn btn-sm btn-hachiss col-lg-12" %>
+                        <%= link_to "詳細をみる", product_path(product), class:"btn btn-sm btn-drk col-lg-12" %>
                     </div>
                 <% end %>
 
@@ -142,14 +141,14 @@
     <div class="row py-5 px-3" style="background-color: #fffffe;">
         <div class="col-12 pb-3">
             <h2>Producers</h2>
+            <div class="pt-4"></div>
             <div class="ml-4">
                 <p>商品を生産している生産者さんの詳細を見ることができます。</p>
             </div>
 
-            <div class="row p-4 m-4" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
-
+            <div class="row p-4 m-4" style="background-color: #fffffe; border: 3px solid #272343; border-radius: 2px;">
                 <div class="col-12">
-                    <h6>生産者のみなさん</h6>
+                    <h6>商品の生産者さん</h6>
                 </div>
 
                 <% @rand_producers.each do |producer| %>
@@ -167,23 +166,22 @@
                                 <% end %>
                             </h6>
                         </div>
-                        <%= link_to "詳細をみる", producer_path(producer), class:"btn btn-sm btn-hachiss col-lg-12" %>
+                        <%= link_to "詳細をみる", producer_path(producer), class:"btn btn-sm btn-blm col-lg-12" %>
                     </div>
                 <% end %>
 
-                <div class="col-lg-2 py-3">
-                    <div class="text-center">
-                        <%= link_to "さらに見る", producers_path, class:"" %>
+                <div class="col-lg-2 py-3 my-auto">
+                    <div class="align-items-center">
+                        <%= link_to producers_path, class:"btn btn-outline-info col-12 px-3" do %>
+                            <i class="fas fa-arrow-circle-right" style="font-size: 40px;"></i><br>
+                            さらに見る
+                        <% end %>
                     </div>
                 </div>
 
             </div>
 
+
         </div>
     </div>
-
-
-    <h1 style="font-family: 'Libre Barcode 39', cursive;">Hachijo-jima is Beautiful Island.</h1>
-
-
 </div>

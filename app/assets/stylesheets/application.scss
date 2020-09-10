@@ -45,6 +45,7 @@
 body {
     font-family: 'M PLUS 1p', sans-serif;
     font-size: 14px;
+    color: #272343;
 }
 h1 {
     font-family: 'Roboto', sans-serif;
@@ -76,7 +77,7 @@ h3 {
 
 
 
-// オリジナルbtn
+// オリジナルbtn_1
 .btn-hachiss {
     color: #272343;
     background-color: #ffd803;
@@ -84,6 +85,26 @@ h3 {
 .btn-hachiss:hover {
     color: #272343;
     box-shadow: 2px 1px 2px 1px #e7c500;
+    transition: .2s;
+}
+// オリジナルbtn_2
+.btn-drk {
+    color: #ffd803; 
+    background-color: #bae8e8;
+}
+.btn-drk:hover {
+    color: #e7c500;
+    box-shadow: 2px 1px 2px 1px #bae8e8;
+    transition: .2s;
+}
+// オリジナルbtn_3
+.btn-blm {
+    color: #bae8e8; 
+    background-color: #272343;
+}
+.btn-blm:hover {
+    color: #bae8e8;
+    box-shadow: 2px 1px 2px 1px #272343;
     transition: .2s;
 }
 

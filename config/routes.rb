@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :index, :create, :show]
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/thanks' => 'orders#thanks'
-  resources :shippings, only: [:index, :create, :edit, :update, :destroy]
+  resources :shippings, only: [:index, :new, :create, :edit, :update, :destroy]
   # カート関連
   resources :cart_items, only: [:create, :index, :update, :destroy] do
     collection do

@@ -2,7 +2,7 @@
     <div class="row p-4">
 
         <%# 生産者詳細 %>
-        <div class="col-lg-12 py-4 px-5">
+        <div class="col-lg-11 py-4">
             <h3>生産者詳細</h3>
             <div class="pb-2"></div>
 
@@ -17,7 +17,6 @@
                             <%= attachment_image_tag @producer, :image, :fill, 320, 320, class: "border", fallback: "pic_default/no-image.jpg", size:'320x320' %>
                         </div>
 
-
                         <div class="text-center">
                             <p class="btn btn-sm btn-secondary col-lg-10">フォローする <i class="fas fa-user-plus"></i></p>
                         </div>
@@ -25,7 +24,6 @@
                             <p class="btn btn-sm btn-info col-lg-10">フォロー中 <i class="fas fa-user-check"></i></p>
                         </div>
                     </div>
-
 
                     <div class="col-lg-7">
                         <div class="pt-5"></div>
@@ -50,11 +48,12 @@
                 <div class="pt-3"></div>
                 
 
-                <div class="row p-4">
-                    <div class="col-lg-12">
-                        <p>「 <%= @producer.name %> 」さんの他の商品はこちら</p>
+                <div class="col-lg-12">
+                    <div class="pt-4"></div>
+                    <p>「 <%= @producer.name %> 」さんの他の商品はこちら</p>
+                    <div class="row p-4">
 
-                        <%# 生産者の他の商品 %>
+                        <%# 生産者の商品 %>
                         <% @products.each do |product| %>
                             <div class="col-lg-2 pt-3">
 
@@ -82,9 +81,19 @@
                             </div>
 
                         <% end %>
-
                         <%# 生産者の商品 終わり %>
+
                     </div>
+
+                    <%# ページネーション %>
+                    <div class="row">
+                        <div class="mx-auto">
+                            <div class="pt-4"></div>
+                            <%= paginate @products %>
+                        </div>
+                    </div>
+                    <%# ページネーション 終わり %>
+
 
                 </div>
   
