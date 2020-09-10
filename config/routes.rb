@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resource :product_favorites, only: [:create, :destroy]
     resources :product_comments, only: [:create, :destroy]
   end
-  get 'products/search' => 'products#search'
+  get 'search' => 'products#search'
   # 商品ジャンル関連
   resources :genres, only: [:show]
   # 生産者関連（いいね含む）

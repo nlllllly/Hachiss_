@@ -14,7 +14,18 @@
   <body>
 
     <!-- ヘッダー -->
-    <%= render 'layouts/header' %>
+    <header class="header">
+      <% if admin_signed_in? %>
+        <%# 管理者用ヘッダー %>
+        <%= render 'layouts/admin_header' %>
+      <% else %>
+        <%# 会員・ゲスト用ヘッダー %>
+        <%= render 'layouts/customer_header' %>
+      <% end %>
+    </header>
+    <!-- ヘッダー 終わり -->
+
+
 
 
     <!-- メイン -->
@@ -25,8 +36,21 @@
 
 
 
+
     <!-- フッター -->
-    <%= render 'layouts/footer' %>
+    <footer class="footer">
+      <% if admin_signed_in? %>
+        <%# 管理者用フッター %>
+        <%= render 'layouts/admin_footer' %>
+      <% else %>
+        <%# 会員・ゲスト用フッター %>
+        <%= render 'layouts/customer_footer' %>
+      <% end %>
+    </footer>
+    <!-- フッター 終わり -->
+
+
+
 
 
     <!-- ページトップへ戻るボタン -->
