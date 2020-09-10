@@ -7,13 +7,17 @@
     <%# ロゴ 終わり %>
     
     <%# 検索 lg用 %>
-    <div class="ml-4 form-row d-none d-lg-inline">
+    <div class="ml-4 form-row">
         <div class="form-inline">
             <%= form_with(url: search_path, method: :get, local: true) do |f| %>
-                <%= f.text_field :search, class:"form-control form-control-sm" %>
-                <%= f.button "", type:"submit", name: nil, class:'btn btn-sm btn-hachiss' do %>
-                    <i class="fas fa-search"></i>
-                <% end %>
+                <div class="input-group">
+                    <%= f.text_field :search, class:"form-control form-control-sm input-group-prepend" %>
+                    <div class="input-group-append">
+                        <%= f.button "", type:"submit", name: nil, class:"btn btn-sm btn-hachiss" do %>
+                            <i class="fas fa-search"></i>
+                        <% end %>
+                    </div>
+                </div>
             <% end %>
         </div>
     </div>
@@ -50,7 +54,7 @@
                 </li>
                 <%# ヘッダーリンク終わり %>
             <% else %>
-                <div class="dropdown-divider" style="bakcground-color: #000;"></div>
+                <div class="dropdown-divider" style="border-top: 1px solid #272343;"></div>
                 <%# ヘッダーリンク %>
                 <li class="nav-item mx-2 dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
