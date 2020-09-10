@@ -6,7 +6,9 @@
             <div class="p-5 my-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
 
                 <h2>配送先一覧</h2>
-                <div class="pt-4"></div>
+                <div class="pt-2"></div>
+                <div class="border-bottom border-secondary"></div>
+                <div class="pb-4"></div>
 
                 <table class="table table-bordered">
                     <thead style="color: #FFFFFF; background-color: #524d75;">
@@ -30,7 +32,10 @@
                         <% end %>
                     </tbody>
                 </table>
-            
+                
+                <div class="pb-4"></div>
+                <%= link_to "マイページへ戻る", customers_my_page_path %>
+
             </div>
         </div>
         
@@ -40,7 +45,9 @@
             <div class="p-5 my-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
 
                 <h2>配送先新規登録</h2>
-                <div class="pt-4"></div>
+                <div class="pt-2"></div>
+                <div class="border-bottom border-secondary"></div>
+                <div class="pb-4"></div>
                 <%= form_with(model: @shipping, url: shippings_path) do |f| %>
                     <%= render 'layouts/error_messages', object: f.object %>
 
@@ -89,11 +96,11 @@
 
                         <div class="action col-lg-12 text-center">
                             <%= f.submit "登録", class:"btn btn-sm btn-info col-lg-3" %>
-                            <div class="pb-4"></div>
                         </div>
                     </div>
                 <% end %>
 
+                <div class="pb-4"></div>
                 <%= link_to "マイページへ戻る", customers_my_page_path %>
 
             </div>
