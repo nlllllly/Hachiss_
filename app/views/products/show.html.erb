@@ -33,8 +33,19 @@
                         <p class="btn btn-sm btn-info col-lg-6">お気に入り登録済み <i class="fas fa-star"></i></p>
 
                         <div class="pt-5"></div>
-                        個数選択
-                        <p class="btn btn-danger col-lg-6">カートに入れる</p>
+                        
+                        <%= form_with(model: [@product, @cart_item], url: cart_items_path, local: true) do |f| %>
+                            <div class="form-row">
+                                <div class="col-lg-4">
+                                    <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], {prompt: false}, {class:"form-control form-control-sm"} %>
+                                </div>
+                                <div class="col-lg-5">
+                                    <%# 商品IDも一緒に送り登録する %>
+                                    <%= f.hidden_field :product_id, value: @product.id %>
+                                    <%= f.submit 'カートに入れる', class:"btn btn-sm btn-primary col-lg-12" %>
+                                </div>
+                            </div>
+                        <% end %>
 
                     </div>
 

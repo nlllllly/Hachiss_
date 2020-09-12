@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     end
     
     def show
+        @cart_item = CartItem.new
         # 販売停止中以外の商品で、生産者のidが紐づくものだけをランダムに6つ表示する
         @products = Product.where.not(sale_status: 0).where(producer_id: @product.producer_id).order("RANDOM()").limit(6)
     end

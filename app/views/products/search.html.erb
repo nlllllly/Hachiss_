@@ -4,7 +4,7 @@
         <%# メイン %>
         <div class="col-lg-10 p-4">
 
-            <h3>商品検索結果 「 <%= params[:search]%> 」</h3>
+            <h3>商品検索結果 「 <%= params[:search] %> 」</h3>
             <div class="pb-2"></div>
 
             <div class="p-3" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
@@ -68,7 +68,9 @@
                     <%# 商品が存在しなかったとき 終わり %>
                 <% end %>
                     
-                <%= paginate @search_products %>
+                <% if @search_products.exists? %>
+                    <%= paginate @search_products %>
+                <% end %>
 
             </div>
         </div>
