@@ -13,9 +13,9 @@ class Admins::ProducersController < ApplicationController
     def create
         @producer = Producer.new(producer_params)
         if @producer.save
-            redirect_to admins_producer_path(@producer)
+            redirect_to admins_producer_path(@producer), notice: "登録が完了しました"
         else
-            render :new, alert: "保存できませんでした"
+            render :new, alert: "登録できませんでした"
         end
     end
     
@@ -27,15 +27,15 @@ class Admins::ProducersController < ApplicationController
     
     def update
         if @producer.update(producer_params)
-            redirect_to admins_producer_path(@producer)
+            redirect_to admins_producer_path(@producer), notice: "変更を保存しました"
         else
-            render :edit, alert: "保存できませんでした"
+            render :edit, alert: "変更を保存できませんでした"
         end
     end
     
     def destroy
         if @producer.destroy
-            redirect_to admins_producers_path, notice: "生産者を削除しました"
+            redirect_to admins_producers_path, notice: "削除が完了しました"
         else
             render :index, alert: "削除できませんでした"
         end

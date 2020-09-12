@@ -19,6 +19,12 @@
 //= require_tree .
 
 
+// flash 表示用
+$(function(){
+  setTimeout("$('#flash-op').fadein('slow')", 500) 
+  setTimeout("$('#flash-op').fadeOut('slow')", 10000) 
+})
+
 
 // ページトップへ「戻るボタン」（上がボタン自体の表示と非表示・下がクリックした時の動作）
 $(function() {
@@ -54,15 +60,3 @@ $(function() {
 });
   
 
-
-
-  // _flash-notice用
-$(function(){
-    setTimeout("$('.flash-notice, .flash-back').fadein('slow')", 500) 
-    setTimeout("$('.flash-notice, .flash-back').fadeOut('slow')", 2000) 
-  })
-  // flash-alert用
-  $(function(){
-    setTimeout("$('.flash-alert').fadein('slow')", 500) 
-    setTimeout("$('.flash-alert').fadeOut('slow')", 3000) 
-  })

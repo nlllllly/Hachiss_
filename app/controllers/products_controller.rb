@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    
+
     before_action :set_product, only: [:show]
     before_action :set_sidebar, only: [:index, :show, :search]
 

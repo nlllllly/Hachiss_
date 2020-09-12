@@ -14,9 +14,9 @@ class ShippingsController < ApplicationController
         @shipping = Shipping.new(shipping_params)
         @shipping.customer_id = current_customer.id
         if @shipping.save
-            redirect_to shippings_path
+            redirect_to shippings_path, notice: "登録が完了しました"
         else
-            render :index, alert: "保存できませんでした"
+            render :index, alert: "登録できませんでした"
         end
     end
 
@@ -27,11 +27,16 @@ class ShippingsController < ApplicationController
         if @shipping.update(shipping_params)
             redirect_to shippings_path, notice: "変更を保存しました"
         else
-            render :edit, alert: "保存できませんでした"
+            render :edit, alert: "変更を保存できませんでした"
         end
     end
-
+    
     def destroy
+        if @shipping.destroy
+            redirect_to shippings_path, notice: "削除が完了しました"
+        else
+            render :index, alert: "削除できませんでした"
+        end
     end
     
 

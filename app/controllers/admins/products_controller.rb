@@ -13,9 +13,9 @@ class Admins::ProductsController < ApplicationController
     def create
         @product = Product.new(product_params)
         if @product.save
-            redirect_to admins_product_path(@product)
+            redirect_to admins_product_path(@product), notice: "登録が完了しました"
         else
-            render :new
+            render :new, alert: "登録できませんでした"
         end
     end
     
@@ -27,15 +27,15 @@ class Admins::ProductsController < ApplicationController
     
     def update
         if @product.update(product_params)
-            redirect_to admins_product_path(@product)
+            redirect_to admins_product_path(@product), notice: "変更を保存しました"
         else
-            render :edit, alert: "保存できませんでした"
+            render :edit, alert: "変更を保存できませんでした"
         end
     end
 
     def destroy
         if @product.destroy
-            redirect_to admins_products_path, notice: "商品を削除しました"
+            redirect_to admins_products_path, notice: "削除が完了しました"
         else
             render :index, alert: "削除できませんでした"
         end

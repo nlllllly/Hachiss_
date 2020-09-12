@@ -11,9 +11,9 @@ class Admins::CustomersController < ApplicationController
 
     def update
         if @customer.update(customer_params)
-            redirect_to admins_customer_path(@customer), notice: "利用状況の変更を保存しました"
+            redirect_to admins_customer_path(@customer), notice: "変更を保存しました"
         else
-            render :show
+            render :show, alert: "変更を保存できませんでした"
         end
     end
 
