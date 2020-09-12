@@ -22,7 +22,12 @@ class Order < ApplicationRecord
         paid_up: 1,
         preparing: 2,
         shipped: 3
-      }
+    }
+
+    # 送料
+    def delivery_fee
+        self.delivery_fee = 800
+    end
 
 
 end

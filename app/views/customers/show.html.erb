@@ -2,7 +2,7 @@
     <div class="row p-4">
             
         <%# マイページ %>
-        <div class="col-lg-11 mx-auto">
+        <div class="col-lg-8 mx-auto">
             <div class="p-5 my-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
 
                 <h2>マイページ</h2>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <%= link_to "会員情報を編集する", edit_customer_registration_path, class:"btn btn-hachiss col-lg-3" %>
+                        <%= link_to "会員情報を編集する", edit_customer_registration_path, class:"btn btn-hachiss col-lg-4" %>
                     </div>
                 </div>
                 <%# 会員情報 終わり %>
@@ -104,7 +104,7 @@
                     <div class="pl-1">
                         <p>現在登録されている配送先は「 <%= @customer.shippings.count %> 件 」です。</p>
                         <div class="text-right">
-                            <%= link_to "配送先の確認・登録はこちら", shippings_path, class:"btn btn-success col-lg-4" %>
+                            <%= link_to "配送先の確認・登録はこちら", shippings_path, class:"btn btn-success col-lg-6" %>
                         </div>
                     </div>
                 </div>

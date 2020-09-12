@@ -17,12 +17,12 @@
                 </div>
                 <div class="pb-3"></div>
                 <table class="table table-bordered">
-                    <thead>
+                    <thead style="background-color: #e3f6f5;">
                         <tr>
                             <th>商品名</th>
-                            <th>商品価格(税込)</th>
+                            <th>価格(税込)</th>
                             <th>数量</th>
-                            <th>商品小計</th>
+                            <th>小計</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -50,7 +50,7 @@
                                     <% sum_price += cart.subtotal.to_i %>
                                     <%= cart.subtotal.to_s(:delimited) %> 円
                                 </td>
-                                <td><%= link_to '削除', cart_item_path(cart), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-sm btn-danger" %></td>
+                                <td><%= link_to '削除', cart_item_path(cart), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-sm btn-danger col-12" %></td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -60,15 +60,15 @@
 
                 <table class="table table-bordered">
                     <tr>
-                        <th>合計金額</th>
+                        <th style="background-color: #e3f6f5;">送料</th>
                         <td>
-                            <strong><%= sum_price.to_s(:delimited) %> 円</strong>
+                            <%# <%= cart.orders.delivery_fee %>円 %>
                         </td>
                     </tr>
                     <tr>
-                        <th>送料</th>
+                        <th style="background-color: #e3f6f5;">合計金額</th>
                         <td>
-                            円
+                            <strong><%= sum_price.to_s(:delimited) %> 円</strong>
                         </td>
                     </tr>
                 </table>

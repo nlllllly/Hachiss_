@@ -2,7 +2,7 @@
     <div class="row p-4">
             
         <%# 配送先編集 %>
-        <div class="col-lg-11 mx-auto">
+        <div class="col-lg-8 mx-auto">
             <div class="p-5 my-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
 
                 <h2>配送先編集</h2>
@@ -57,9 +57,9 @@
                         </div>
 
                         <div class="action col-lg-12 text-center">
-                            <%= f.submit "保存", class:"btn btn-sm btn-info col-lg-3" %>
+                            <%= f.submit "保存", class:"btn btn-info col-lg-4" %>
                             <div class="pb-4"></div>
-                            <%= link_to "配送先を削除する", shipping_path(@shipping), class:"btn btn-sm btn-danger col-lg-3", method:"delete", data:{ confirm: "本当に削除しますか？" } %>
+                            <%= link_to "配送先を削除する", shipping_path(@shipping), class:"btn btn-sm btn-danger col-lg-4", method:"delete", data:{ confirm: "本当に削除しますか？" } %>
                         </div>
                     </div>
                 <% end %>

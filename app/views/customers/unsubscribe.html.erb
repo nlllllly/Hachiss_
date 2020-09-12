@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row p-4">
+
+        <div class="col-lg-7 mx-auto">
+            <div class="p-5 my-4" style="background-color: #EAEAEA; border: 3px solid #272343; border-radius: 5px;">
+
+            <div class="text-center">
+                <h3>退会の確認</h3>
+            </div>
+
+            <div class="pt-5"></div>
+
+            <div class="text-center">
+                <p>退会すると、会員登録情報やこれまでの購入履歴が閲覧できなくなります。</p>
+		        <p>退会する場合は、「退会する」をクリックしてください。</p>
+            </div>
+
+            <div class="pt-5"></div>
+
+            <div class="row mx-auto">
+                <div class="col-lg-2"></div>
+                <%= link_to '退会しない', customers_my_page_path, class: "btn btn-primary col-lg-3" %>
+                <div class="col-lg-2 pb-3"></div>
+                <%= link_to '退会する', customers_withdraw_path(@customer), method: :patch, class: "btn btn-danger col-lg-3" %>
+                <div class="col-lg-2"></div>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
