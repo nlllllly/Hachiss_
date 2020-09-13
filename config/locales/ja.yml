@@ -56,12 +56,12 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         bank_transfer: "銀行振込"
-        order_status:
-          waiting: "支払待ち"
-          paid_up: "支払済み"
-          preparing: "発送準備中"
-          shipped: "発送済み"
-          
+      order_status:
+        waiting: "支払待ち"
+        paid_up: "支払済み"
+        preparing: "発送準備中"
+        shipped: "発送済み"
+        
     # order_detail.rb用
     order_detail:
       product_dtatus:

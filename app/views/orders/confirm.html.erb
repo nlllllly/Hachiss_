@@ -1,0 +1,142 @@
+<div class="container-fluid">
+    <div class="row p-4">
+
+        <div class="col-lg-9 mx-auto">
+
+            <div class="p-5 my-4" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 5px;">
+                <h3>注文確認</h3>
+                <div class="pt-2"></div>
+                <div style="border-top: 1px solid #272343;"></div>
+                <div class="pb-3"></div>
+                
+                <p style="color: red;">
+                    まだ購入は完了していません。<br>
+                    「購入を確定する」ボタンをクリックして完了してください。
+                </p>
+
+                <div class="pb-3"></div>
+                
+
+                <%= form_with(model: @order, url: orders_path, local: true) do |f| %>
+                    <div class="form-row p-lg-3">
+                        <div class="col-lg-12">
+                            <table class="table table-bordered">
+                                <thead style="background-color: #e3f6f5;">
+                                    <tr>
+                                        <th>商品名</th>
+                                        <th>価格（税込）</th>
+                                        <th>数量</th>
+                                        <th>小計</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="background-color: #fffffe;">
+                                    <%# 合計金額を初期化 %>
+                                    <% sum_all = 0 %>
+                                    <% @cart_items.each do |cart_item| %>
+                                        <tr>
+                                            <td>
+                                                <%= attachment_image_tag cart_item.product, :image, :fill, 45, 45, format: 'png',fallback: "no_image.png",size:'45x45' %>
+                                                <%= cart_item.product.name %>
+                                            </td>
+                                            <td><%= cart_item.product.add_tax_price.to_s(:delimited) %></td>
+                                            <td><%= cart_item.quantity %></td>
+                                            <td>
+                                                <%= cart_item.subtotal.to_s(:delimited) %> 円
+                                                <%# sum_allを合計してtotal_price用に準備しておく %>
+                                                <% sum_all += cart_item.subtotal.to_i %>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="pt-3"></div>
+
+                    <div class="form-row p-lg-3">
+                        <div class="col-lg-4">
+                            <div class="pt-2"></div>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th style="background-color: #e3f6f5;">送料</th>
+                                    <td style="background-color: #fffffe;">
+                                        <%= @order.delivery_fee.to_s(:delimited) %> 円
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #e3f6f5;">商品合計</th>
+                                    <td style="background-color: #fffffe;">
+                                        <%= sum_all.to_s(:delimited) %> 円
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #e3f6f5;">請求金額</th>
+                                    <td style="background-color: #fffffe;">
+                                        <%# 商品の小計の合計と送料を合わせた金額 %>
+                                        <% claimed = sum_all + @order.delivery_fee.to_i %>
+                                        <%= claimed.to_s(:delimited) %> 円
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="col-lg-1"></div>
+
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <h6>支払方法</h6>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p><%= @order.payment_method_i18n %></p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <h6>お届け先</h6>
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <p><%= @order.reciver_name %></p>
+                                    <p>
+                                        <%= @order.postcode %><br>
+                                        <%= @order.address %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                    <%= f.hidden_field :postcode, :value => "#{@order.postcode}" %>
+                    <%= f.hidden_field :address, :value => "#{@order.address}" %>
+                    <%= f.hidden_field :reciver_name, :value => "#{@order.reciver_name}" %>
+                    <%# 送料抜いた商品合計をtotal_priceに保存 %>
+                    <%= f.hidden_field :total_price, :value => sum_all %>
+                    <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+
+                    <div class="pt-4"></div>
+
+                    <div class="row mx-auto">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-5 pb-3">
+                            <%= link_to '支払・お届け先選択へ戻る', new_order_path, class: "btn btn-info col-lg-12" %>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4 pb-3">
+                            <%= f.submit "購入を確定する", class: "btn btn btn-hachiss col-lg-12" %>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
+
+                <% end %>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

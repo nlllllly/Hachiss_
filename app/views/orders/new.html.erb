@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row p-4">
+
+        <div class="col-lg-9 mx-auto">
+
+            <div class="p-5 my-4" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 5px;">
+                <h3>支払方法・お届け先選択</h3>
+                <div class="pt-2"></div>
+                <div style="border-top: 1px solid #272343;"></div>
+                <div class="pt-4"></div>
+                
+
+                <%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
+
+                    <!-- A.支払方法 -->
+                    <div class="form-row">
+                        <div class="col-lg-6">
+                            <h6><%= f.label :payment_method, "支払方法" %></h6>
+                        </div>
+                        <div class="col-lg-6">
+                            <%= f.select :payment_method, Order.payment_methods_i18n.invert, {prompt: false}, class:"form-control form-control-sm" %>
+                        </div>
+                    </div>
+                    <!-- A.支払方法 終わり -->
+
+                    <div class="pb-5"></div>
+
+                    <!-- B.お届け先 -->
+                    <div class="form-row">
+                        <div class="col-lg-12">
+                            <h6><%= f.label "お届け先" %></h6>
+                        </div>
+                        <!-- 自身の住所 -->
+                        <div class="col-lg-12">
+                            <label><%= f.radio_button :add, 1, checked: true, checked: "checked" %> ご自身の住所</label>
+                            <p><%= @customer.full_name %> | <%= @customer.postcode %> <%= @customer.customer_full_address %></p>
+                            <div class="mb-4"></div>
+                        </div>
+
+
+                        <!-- 登録済み住所 -->
+                        <div class="col-lg-12">
+                            <label><%= f.radio_button :add, 2 %> 登録済みの配送先から選択</label>
+                            <%= f.collection_select :address, @customer.shippings, :id, :shipping_dropdown, {prompt: false}, {class:"form-control form-control-sm"} %>
+                        </div>
+                    </div>
+                    <!-- B.お届け先 終わり -->
+                    
+                    <div class="pb-5"></div>
+
+                    <div class="row mx-auto">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4 pb-3">
+                            <%= link_to 'カートへ戻る', cart_items_path, class: "btn btn-info col-lg-12" %>
+                        </div>
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-4 pb-3">
+                            <%= f.submit "確認画面へ進む", class: "btn btn-hachiss col-lg-12" %>
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
+                <% end %>
+
+            </div>
+
+
+        </div>
+        
+    </div>
+</div>

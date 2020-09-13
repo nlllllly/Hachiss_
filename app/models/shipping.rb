@@ -20,7 +20,12 @@ class Shipping < ApplicationRecord
     
     # 配送先の住所
     def shipping_full_address
-        self.address_city + self.address_street + self.address_building
+        customer.prefecture_name + " " + self.address_city + self.address_street + self.address_building
+    end
+    
+    # 配送先ドロップダウン表示用
+    def shipping_dropdown
+        self.full_name + " | " + self.postcode + "  " + customer.prefecture_name + " " + self.address_city + self.address_street + self.address_building
     end
     
 end

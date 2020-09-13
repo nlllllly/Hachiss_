@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="row p-4">
+
+        <div class="col-lg-10 mx-auto">
+
+            <div class="p-5 my-4" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 5px;">
+                <h3>注文履歴一覧</h3>
+                <div class="pt-2"></div>
+                <div style="border-top: 1px solid #272343;"></div>
+                <div class="pb-3"></div>
+
+                <table class="table table-bordered">
+                    <thead style="color:#fffffe; background-color: #272343;">
+                        <tr>
+                            <th>注文日</th>
+                            <th>配送先</th>
+                            <th>注文商品</th>
+                            <th>支払金額</th>
+                            <th>ステータス</th>
+                            <th>注文詳細</th>
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: #fffffe;">
+                        <% @orders.each do |order| %>
+                            <tr>
+                                <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                                <td>
+                                    <%= order.postcode %><br>
+                                    <%= order.address %><br>
+                                    <%= order.reciver_name %>
+                                </td>
+                                <td>
+                                    <% order.order_details.each do |order_detail| %>
+                                        <%= order_detail.product.name %><br>
+                                    <% end %>
+                                </td>
+                                <td>
+                                    <%= order.claimed.to_s(:delimited) %> 円
+                                </td>
+                                <td><%= order.order_status_i18n %></td>
+                                <td><%= link_to "詳細", order_path(order), class:"btn btn-sm btn-primary" %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+        
+        
+                <%# ページネーション %>
+                <div class="row">
+                    <div class="mx-auto">
+                        <div class="pt-4"></div>
+                        <%= paginate @orders %>
+                    </div>
+                </div>
+                <%# ページネーション 終わり %>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

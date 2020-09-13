@@ -29,5 +29,9 @@ class Order < ApplicationRecord
         self.delivery_fee = 800
     end
 
+    # 合計金額と送料を合算した金額
+    def claimed
+        self.total_price + self.delivery_fee
+    end
 
 end

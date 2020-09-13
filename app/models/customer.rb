@@ -31,9 +31,14 @@ class Customer < ApplicationRecord
   }
 
 
-  # 会員フルネーム表示用 
+  # 会員フルネーム
   def full_name
     self.last_name + " " + self.first_name
+  end
+  
+  # 会員住所
+  def customer_full_address
+    self.prefecture_name + " " + self.address_city + self.address_street + self.address_building
   end
 
   # 会員ステータス表示用

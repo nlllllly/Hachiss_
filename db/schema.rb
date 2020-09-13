@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_073237) do
     t.string "reciver_name", null: false
     t.integer "delivery_fee", null: false
     t.integer "total_price", null: false
-    t.integer "payment_method", default: 0, null: false
+    t.integer "payment_method", null: false
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
