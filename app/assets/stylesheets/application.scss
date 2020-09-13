@@ -95,27 +95,27 @@ h3 {
 }
 .btn-hachiss:hover {
     color: #272343;
-    box-shadow: 2px 1px 2px 1px #e7c500;
+    background-color: #e7c500;
     transition: .2s;
 }
 // オリジナルbtn_2
 .btn-drk {
     color: #ffd803; 
-    background-color: #bae8e8;
+    background-color: #272343;
 }
 .btn-drk:hover {
     color: #e7c500;
-    box-shadow: 2px 1px 2px 1px #bae8e8;
+    background-color: #140e3d;
     transition: .2s;
 }
 // オリジナルbtn_3
 .btn-blm {
-    color: #bae8e8; 
-    background-color: #272343;
+    color: #272343;
+    background-color: #bae8e8;
 }
 .btn-blm:hover {
-    color: #bae8e8;
-    box-shadow: 2px 1px 2px 1px #272343;
+    color: #272343;
+    background-color: #9cdada;
     transition: .2s;
 }
 

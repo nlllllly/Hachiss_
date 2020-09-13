@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="row p-4">
+
+        <div class="col-lg-10 mx-auto">
+            <div class="p-5 my-4" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 5px;">
+                <h3>注文履歴詳細</h3>
+                <div class="pt-2"></div>
+                <div style="border-top: 1px solid #272343;"></div>
+                <div class="pb-5"></div>
+
+                <h6>注文詳細</h6>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th style="color:#fffffe; background-color: #272343;">注文日</th>
+                            <td style="background-color: #fffffe;">
+                                <%= @order.created_at.strftime('%Y/%m/%d') %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="color:#fffffe; background-color: #272343;">配送先</th>
+                            <td style="background-color: #fffffe;">
+                                <%= @order.postcode %> <br>
+                                <%= @order.address %> <br>
+                                <%= @order.reciver_name %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="color:#fffffe; background-color: #272343;">支払方法</th>
+                            <td style="background-color: #fffffe;">
+                                <%= @order.payment_method_i18n %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="color:#fffffe; background-color: #272343;">ステータス</th>
+                            <td style="background-color: #fffffe;">
+                                <%= @order.order_status_i18n %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pb-4"></div>
+
+                <h6>請求情報</h6>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th style="color:#fffffe; background-color: #272343;">商品合計</th>
+                            <td style="background-color: #fffffe;">
+                                <%= @order.total_price.to_s(:delimited) %> 円
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="color:#fffffe; background-color: #272343;">配送料</th>
+                            <td style="background-color: #fffffe;">
+                                <%= @order.delivery_fee.to_s(:delimited) %> 円
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="color:#fffffe; background-color: #272343;">ご請求金額</th>
+                            <td style="background-color: #fffffe;">
+                                <%= @order.claimed.to_s(:delimited) %> 円
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pb-4"></div>
+
+                <h6>注文内容</h6>
+                <table class="table table-bordered">
+                    <thead style="color:#fffffe; background-color: #272343;">
+                        <tr>
+                            <th>商品</th>
+                            <th>価格（税込）</th>
+                            <th>個数</th>
+                            <th>小計</th>
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: #fffffe;">
+                        <% @order.order_details.each do |order_detail| %>
+                            <tr>
+                                <td>
+                                    <%= link_to product_path(order_detail.product) do %>
+                                        <%= attachment_image_tag order_detail.product, :image, :fill, 45, 45, format: 'png',fallback: "no_image.png",size:'45x45' %>
+                                        <%= order_detail.product.name %>
+                                    <% end %>
+                                </td>
+                                <td><%= order_detail.product.add_tax_price.to_s(:delimited) %> 円</td>
+                                <td><%= order_detail.quantity %> 個</td>
+                                <td><%= (order_detail.product.add_tax_price * order_detail.quantity).to_s(:delimited) %> 円</td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+
+            
+            <div class="pb-3"></div>
+            <%= link_to "戻る", orders_path, class:"" %>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
