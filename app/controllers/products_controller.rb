@@ -15,12 +15,17 @@ class ProductsController < ApplicationController
     end
 
     def search
-        search = params[:search]
-        if search.present?
-            @search_products = Product.page(params[:page]).per(20).where('name LIKE ?', "%#{search}%")
-        else
-            @search_products = Product.none
+        @search_products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(20)
+        respond_to do |format|
+          format.html 
+          format.json 
         end
+        # keyword = params[:keyword]
+        # if search.present?
+        #     @search_products = Product.page(params[:page]).per(20).where('name LIKE ?', "%#{keyword}%")
+        # else
+        #     @search_products = Product.none
+        # end
     end
     
     
