@@ -41,7 +41,7 @@
                                 <td>
                                     <%= form_for cart do |f| %>
                                         <div class="form-row">
-                                            <%= f.number_field :quantity, value: cart.quantity, class:"form-control form-control-sm col-md-3" %>
+                                            <%= f.number_field :quantity, value: cart.quantity, min: 1, class:"form-control form-control-sm col-md-3" %>
                                             <div class="col-md-1"></div>
                                             <%= f.submit '変更', class: "btn btn-sm btn-blm col-md-3" %>
                                         </div>

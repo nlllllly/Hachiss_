@@ -1,16 +1,13 @@
 class OrdersController < ApplicationController
     before_action :authenticate_customer!
     before_action :set_order, only: [:show]
-    before_action :set_customer
+    before_action :ensure_correct_order, only: [:show]
 
     def index
-        @orders = Order.where(customer_id: @customer.id).page(params[:page]).per(10).reverse_order
+        @orders = Order.where(customer_id: current_customer.id).page(params[:page]).per(10).reverse_order
     end
     
     def show
-        unless @order.customer_id == @customer.id
-            redirect_to root_path, alert: "アクセスエラー"
-        end
     end
 
     def new
@@ -70,7 +67,7 @@ class OrdersController < ApplicationController
                 @order.address = @customer.customer_full_address
                 @order.reciver_name = @customer.full_name
             when 2
-                @sta = params[:order][:address_street].to_i
+                @sta = params[:order][:address].to_i
                 @shipping_address = Shipping.find(@sta)
                 @order.postcode = @shipping_address.postcode
                 @order.address = @shipping_address.shipping_full_address
@@ -80,9 +77,6 @@ class OrdersController < ApplicationController
 
     def thanks
     end
-
-
-
 
 
 
@@ -102,10 +96,11 @@ class OrdersController < ApplicationController
     def set_order
         @order = Order.find(params[:id])
     end
-
-    def set_customer
-        @customer = current_customer
+    
+    def ensure_correct_order
+        unless @order.customer_id == current_customer.id
+            redirect_to orders_path, alert: "アクセスエラーです"
+        end
     end
-
 
 end

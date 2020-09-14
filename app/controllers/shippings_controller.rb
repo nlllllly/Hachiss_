@@ -1,6 +1,7 @@
 class ShippingsController < ApplicationController
     before_action :authenticate_customer!
     before_action :set_shipping, only: [:edit, :update, :destroy]
+    before_action :ensure_correct_shipping, only: [:edit, :update, :destroy]
 
     def index
         @shippings = Shipping.page(params[:page]).per(10)
@@ -63,6 +64,11 @@ class ShippingsController < ApplicationController
         @shipping = Shipping.find(params[:id])
     end
 
+    def ensure_correct_shipping
+        unless @shipping.customer_id == current_customer.id
+            redirect_to shippings_path, alert: "アクセスエラーです"
+        end
+    end
 
 
 end
