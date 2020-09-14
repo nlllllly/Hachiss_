@@ -64,8 +64,8 @@ ja:
         
     # order_detail.rb用
     order_detail:
-      product_dtatus:
-        cheking: "在庫確認中"
+      product_status:
+        checking: "在庫確認中"
         backorder: "入荷待ち"
         ready: "準備完了"
           

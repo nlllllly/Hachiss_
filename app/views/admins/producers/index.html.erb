@@ -12,12 +12,11 @@
         </div>
 
         <div class="col-lg-9 mx-auto my-4">
-            <h5>生産者一覧</h5>
+            <h4>生産者一覧</h4>
             <table class="table">
                 <thead style="background-color: #d4778d; color:#FFFFFF; ">
                     <tr>
                         <th>ID</th>
-                        <th></th>
                         <th>生産者名</th>
                         <th>表示ステータス</th>
                         <th>登録日</th>
@@ -27,9 +26,9 @@
                     <% @producers.each do |producer| %>
                         <tr>
                             <td><%= producer.id %></td>
-                            <td><%= attachment_image_tag producer, :image, :fill, 50, 50, class: "border", fallback: "pic_default/no-image.jpg", size:'50x50' %></td>
                             <td>
                                 <%= link_to admins_producer_path(producer) do %>
+                                    <%= attachment_image_tag producer, :image, :fill, 50, 50, class: "border", fallback: "pic_default/no-image.jpg", size:'50x50' %>
                                     <%= producer.name %>
                                 <% end %>
                             </td>

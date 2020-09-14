@@ -2,16 +2,15 @@
     <div class="row">
         <div class="col-lg-9 mx-auto">
             <h3>ORDERS</h3>
-            </div>
-            
         </div>
         
         <div class="col-lg-9 mx-auto my-4">
-            <h5>注文履歴一覧</h5>
+            <h4>注文履歴一覧</h4>
             <table class="table">
                 <thead style="background-color: #d6b918; color: #FFFFFF;">
                     <tr>
                         <th>ID</th>
+                        <th></th>
                         <th>注文者</th>
                         <th>請求額</th>
                         <th>注文ステータス</th>
@@ -23,11 +22,10 @@
                         <tr>
                             <td><%= order.id %></td>
                             <td>
-                                <%= link_to admins_order_path(order) do %>
-                                    <%= order.customer.full_name %>
-                                <% end %>
+                                <%= link_to "注文詳細を見る", admins_order_path(order), class:"btn btn-sm btn-outline-info" %>
                             </td>
-                            <td><%= order.total_price %></td>
+                            <td><%= order.customer.full_name %></td>
+                            <td><%= order.total_price.to_s(:delimited) %> 円</td>
                             <td><%= order.order_status_i18n %></td>
                             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
                         </tr>
