@@ -50,6 +50,10 @@
                 <% @rand_products.each do |product| %>
                     <div class="col-lg-2 py-3">
                         <div class="text-center">
+                            <p><%= product.created_at.strftime('%m/%d') %> 更新！</p>
+                        </div>
+                        <div class="pt-2"></div>
+                        <div class="text-center">
                             <%= link_to product_path(product) do %>
                                 <%= attachment_image_tag product, :image, :fill, 120, 120, class: "border", fallback: "pic_default/no-image.jpg", size:'120x120' %>
                             <% end %>
@@ -108,8 +112,12 @@
                     </div>
                 </div>
 
-                <% @rank_products.each do |product| %>
+                <% @rank_products.each.with_index(1) do |product, i| %>
                     <div class="col-lg-2 py-3">
+                        <div class="text-center">
+                            <h6 class="btn col-lg-9" style="background-color: #ffd803; cursor: default;">第<%= i %>位</h6>
+                        </div>
+                        <div class="pt-2"></div>
                         <div class="text-center">
                             <%= link_to product_path(product) do %>
                                 <%= attachment_image_tag product, :image, :fill, 120, 120, class: "border", fallback: "pic_default/no-image.jpg", size:'120x120' %>
@@ -143,12 +151,12 @@
             <h2>Producers</h2>
             <div class="pt-4"></div>
             <div class="ml-4">
-                <p>商品を生産している生産者さんの詳細を見ることができます。</p>
+                <p>商品を生産している生産者の詳細を見ることができます。</p>
             </div>
 
             <div class="row p-4 m-4" style="background-color: #fffffe; border: 3px solid #272343; border-radius: 2px;">
                 <div class="col-12">
-                    <h6>商品の生産者さん</h6>
+                    <h6>商品の生産者</h6>
                 </div>
 
                 <% @rand_producers.each do |producer| %>
