@@ -6,7 +6,8 @@ class HomeController < ApplicationController
         # 商品を人気順にランキングで5つだけ表示
         @rank_products = Product.find(OrderDetail.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
         # 生産者をランダムに5つだけ表示
-        @rand_producers = Producer.where(producer_status: 1).order("RANDOM()").limit(5)
+        rand = Rails.env.production? ? "RANDOM()" : "rand()"
+        @rand_producers = Producer.where(producer_status: 1).order(rand).limit(5)
     end
 
 
