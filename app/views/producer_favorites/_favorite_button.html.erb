@@ -1,0 +1,15 @@
+<%# 会員でログインしないと表示されない %>
+<% if customer_signed_in? %>
+    <% if producer.favorited_by?(current_customer) %>
+        <%# 済みのボタン %>
+        <%= link_to producer_producer_favorites_path(producer), method: :delete, remote: true, class:"btn btn-sm btn-info col-lg-12" do %>
+            フォロー中 <i class="fas fa-user-check"></i>
+        <% end %>
+
+    <% else %>
+        <%# まだしていないボタン %>
+        <%= link_to producer_producer_favorites_path(producer), method: :post, remote: true, class:"btn btn-sm btn-secondary col-lg-12" do %>
+            フォローする <i class="fas fa-user-plus"></i>
+        <% end %>
+    <% end %>
+<% end %>

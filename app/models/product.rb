@@ -4,7 +4,6 @@ class Product < ApplicationRecord
     has_many :cart_items, dependent: :destroy
     has_many :product_favorites, dependent: :destroy
     has_many :product_comments, dependent: :destroy
-    has_many :producer_favorites, dependent: :destroy
     belongs_to :producer
     belongs_to :genre
 

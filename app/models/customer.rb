@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :product_favorites, dependent: :destroy
   has_many :product_comments, dependent: :destroy
+  has_many :producer_favorites, dependent: :destroy
 
   # バリデーション
   validates :last_name_kana, presence: true, length: { minimum:1, maximum:10 }

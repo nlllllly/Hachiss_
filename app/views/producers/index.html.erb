@@ -36,11 +36,8 @@
 
                                     <div class="pt-2"></div>
 
-                                    <div class="text-center">
-                                        <p class="btn btn-sm btn-info col-lg-8">フォロー中 <i class="fas fa-user-check"></i></p>
-                                    </div>
-                                    <div class="text-center">
-                                        <p class="btn btn-sm btn-secondary col-lg-8">フォローする <i class="fas fa-user-plus"></i></p>
+                                    <div class="buttons_<%= producer.id %>">
+                                        <%= render 'producer_favorites/favorite_button', producer: producer %>
                                     </div>
 
                                     <div class="pt-2"></div>

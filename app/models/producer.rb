@@ -14,5 +14,10 @@ class Producer < ApplicationRecord
         invaild: 0,
         active: 1
     }
+
+    # 生産者いいね用
+    def favorited_by?(customer)
+        producer_favorites.where(customer_id: customer.id).exists?
+    end
     
 end
