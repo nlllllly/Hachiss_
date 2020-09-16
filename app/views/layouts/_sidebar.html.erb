@@ -4,14 +4,7 @@
     <%# 検索フォーム %>
     <div class="form-group py-4">
         <h6>商品検索</h6>
-        <%= form_with(url: search_path, method: :get, local: true, class: "input-group") do |f| %>
-            <%= f.text_field :name, id: "searching-form", class:"form-control form-control-sm input-group-prepend", placeholder:"商品を検索" %>
-            <div class="input-group-append">
-                <%= f.button "", type:"submit", name: nil, class:"btn btn-sm btn-hachiss" do %>
-                    <i class="fas fa-search"></i>
-                <% end %>
-            </div>
-        <% end %>
+        <%= render 'products/search_form' %>
     </div>
     <%# 検索フォーム 終わり %>
 
