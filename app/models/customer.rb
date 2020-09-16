@@ -4,11 +4,11 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :orders
-  has_many :shippings
-  has_many :cart_items
-  has_many :product_favorites
-  has_many :product_comments
+  has_many :orders, dependent: :destroy
+  has_many :shippings, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :product_favorites, dependent: :destroy
+  has_many :product_comments, dependent: :destroy
 
   # バリデーション
   validates :last_name_kana, presence: true, length: { minimum:1, maximum:10 }

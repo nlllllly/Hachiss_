@@ -1,6 +1,6 @@
 class Genre < ApplicationRecord
 
-    has_many :products
+    has_many :products, dependent: :destroy
 
     # バリデーション
     validates :name, presence: true, length: { minimum:1, maximum:10 }
