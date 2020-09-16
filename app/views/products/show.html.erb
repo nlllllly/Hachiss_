@@ -14,71 +14,127 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <%# <div clas="pt-4"></div> %>
-                        <div class="pt-5 pl-2">
-                            <h3><%= @product.name %></h3>
-                        </div>
+                        <div class="row p-4">
 
-                        <div class="text-right pr-2">
-                            <h4><%= @product.add_tax_price.to_s(:delimited) %> 円</h4>
-                        </div>
+                            <%# 商品名 %>
+                            <div class="col-lg-12">
+                                <div class="pt-3"></div>
+                                <h3><%= @product.name %></h3>
+                                <div class="pb-3"></div>
+                            </div>
 
-                        <div class="pt-3"></div>
+                            <%# 商品価格 %>
+                            <div class="col-lg-6">
+                                <div class="pt-1"></div>
+                                <p>商品価格（税込）<p>
+                                <div class="pb-3"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="text-right">
+                                    <h4><%= @product.add_tax_price.to_s(:delimited) %> 円</h4>
+                                </div>
+                                <div class="pb-5"></div>
+                            </div>
 
-                        <div class="action">
                             <%# 商品お気に入りボタン %>
-                            <%= render 'products/favorite_button', product: @product %>
-                        </div>
+                            <div class="col-lg-7 mx-auto">
+                                <div class="buttons_<%= @product.id %>">
+                                    <%= render 'product_favorites/favorite_button', product: @product %>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="pt-1"></div>
+                                <div class="text-center">
+                                    お気に入りに登録しているユーザー <%= @product.product_favorites.count %>人
+                                </div>
+                            </div>
 
-                        <div class="pt-5"></div>
-                        
-                        <%= form_with(model: [@product, @cart_item], url: cart_items_path, local: true) do |f| %>
-                            <div class="form-row">
-                                <div class="col-lg-4">
-                                    <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], {prompt: false}, {class:"form-control form-control-sm"} %>
-                                </div>
-                                <div class="col-lg-5">
-                                    <%# 商品IDも一緒に送り登録する %>
-                                    <%= f.hidden_field :product_id, value: @product.id %>
-                                    <%= f.submit 'カートに入れる', class:"btn btn-sm btn-primary col-lg-12" %>
-                                </div>
+                            <%# カートへ追加 フォーム %>
+                            <div class="col-lg-12">
+                                <div class="pt-5"></div>
+                                <%= form_with(model: [@product, @cart_item], url: cart_items_path, local: true) do |f| %>
+                                    <div class="form-row">
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-3">
+                                            <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10], {prompt: false}, {class:"form-control form-control-sm"} %>
+                                        </div>
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-6">
+                                            <%# 商品IDも一緒に送り登録する %>
+                                            <%= f.hidden_field :product_id, value: @product.id %>
+                                            <%= f.submit 'カートに入れる', class:"btn btn-sm btn-primary col-lg-12" %>
+                                        </div>
+                                        <div class="col-lg-1"></div>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <%# カートへ追加 フォーム 終わり %>
+
+                        </div>
+                    </div>
+                </div>
+
+                <%# 商品説明 & コメント %>
+                <div class="row mx-auto py-4">
+                    <div class="col-lg-10">
+                        <h6>商品の説明</h6>
+                        <div class="pl-1">
+                            <p><%= @product.description %><p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="pt-2"></div>
+                <div style="border-top: 1px solid #272343;"></div>
+                <div class="pt-4"></div>
+
+
+                <%# コメント 一覧 %>
+                <div class="row mx-auto py-4">
+                    <div class="col-lg-12">
+                        <h6>商品のコメント / <%= @product.product_comments.count %> 件</h6>
+                        <%# コメントが存在している時だけコメントを表示 %>
+                        <% if @product.product_comments.exists? %>
+                            <%= render 'product_comments/comment_form', product: @product %>
+                        <% else %>
+                            <div class="text-center pt-5">
+                                コメントはまだありません
                             </div>
                         <% end %>
 
                     </div>
-
                 </div>
+                <%# コメント 一覧 終わり %>
 
-                <%# 商品説明 & コメント %>
-                <div class="row p-4">
-                    <div class="col-lg-12">
-                        <div class="pl-2">
-                            <p>商品の説明</p>
+
+                <div class="pt-5"></div>
+
+                <%# コメントフォーム %>
+                <div class="row mx-auto py-4">
+                    <%# 会員としてログインしている時だけ表示させる %>
+                    <% if customer_signed_in? %>
+                        <div class="col-lg-12">
+                            <h6>コメントをする</h6>
+                            <div class="pl-2">
+                                <%= form_with(model: [@product, @product_comment], url: product_product_comments_path(@product)) do |f| %>
+                                    <%= f.text_area :comment, rows:'5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
+                                    <div class="pt-2"></div>
+                                    <div class="action text-right">
+                                        <%= f.submit "投稿する", class: "btn btn-sm btn-blm col-lg-2" %>
+                                    </div>
+                                <% end %>
+                            </div>
                         </div>
-                        <div class="pl-5">
-                            <p><%= @product.description %><p>
-                        </div>
-
-                        <div class="pt-3"></div>
-
-                        <%# ここにコメント関連 %>
-                        <div class="pl-2">
-                            <p>商品へのコメント</p>
-                        </div>
-
-                        <div class="pt-3"></div>
-
-                        <div class="pl-2">
-                            <p>商品へのコメントをする</p>
-                        </div>
-
-                    </div>         
-
+                    <% end %>
                 </div>
+                <%# コメントフォーム 終わり %>
+
                 
                 <div class="pt-5"></div>
                 <div class="border-top border-secondary"></div>
                 <div class="pb-5"></div>
+
 
                 <%# 商品の生産者 %>
                 <div class="row p-4">
@@ -94,7 +150,7 @@
 
                         <div class="text-center p-4">
                             <%= link_to producer_path(@product.producer) do %>
-                                <h6 class="btn btn-lg btn-hachiss col-lg-8">詳細を見る</h6>
+                                <h6 class="btn btn-sm btn-hachiss col-lg-8">詳細を見る</h6>
                             <% end %>
                         </div>
 
