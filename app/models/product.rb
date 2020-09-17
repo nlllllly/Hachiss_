@@ -25,6 +25,16 @@ class Product < ApplicationRecord
     def favorited_by?(customer)
         product_favorites.where(customer_id: customer.id).exists?
     end
+
+    # レビューの平均値用
+    def average_rate
+        # レビューがなければ「0」/ あれば、「rate」の平均値を表示する
+        if product_comments.blank?
+            return 0
+        else
+            return product_comments.average(:rate).round(2)
+        end
+    end
     
     # 消費税を加えた商品価格
     def add_tax_price

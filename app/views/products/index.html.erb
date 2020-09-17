@@ -31,8 +31,14 @@
                             </div>
 
                             <div class="text-right">
-                                <p><%= product.add_tax_price.to_s(:delimited) %> 円</p>
+                                <%= product.add_tax_price.to_s(:delimited) %> 円
                             </div>
+
+                            <div class="text-center">
+                                <%= render 'products/rate_average', product: product %>
+                            </div>
+
+                            <div class="pt-2"></div>
 
                             <%# 商品お気に入りボタン %>
                             <div class="buttons_<%= product.id %>">

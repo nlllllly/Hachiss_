@@ -1,17 +1,21 @@
-<% product.product_comments.each do |product_comment| %>
-    <div class="pt-2 px-2" style="background-color: #fffffe; border: 2px solid #272343; border-radius: 2px;">
-        <p>投稿者：<%= product_comment.customer.full_name %></p>
-        <p><%= product_comment.comment %></p>
-        <div class="text-right">
-            <p>
-                投稿日：<%= product_comment.created_at.strftime('%Y/%m/%d') %> |
-                <% if product_comment.customer == current_customer %>
-                    <%= link_to product_product_comment_path(product_comment.product, product_comment), method: :delete, class: "btn btn-sm btn-danger" do %>
-                        コメント削除 <i class="fas fa-trash"></i>
-                    <% end %>
-                <% end %>
-            </p>
-        </div>
+<%= form_with(model: [product, product_comment], url: product_product_comments_path(product)) do |f| %>
+    <%= f.text_area :comment, rows:'5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
+    <div class="pt-2"></div>
+
+    <div id="rating-form">
+        <label>評価：</label>
     </div>
-    <div class="pb-2"></div>
+
+    <div class="action text-right">
+        <%= f.submit "投稿する", class: "btn btn-sm btn-blm col-lg-2" %>
+    </div>
 <% end %>
+
+
+<script>
+    $('#rating-form').raty({
+        path: '/assets/',
+        // ここのスコアネームで「product_comment」モデルの「rate」カラムに送ることを設定
+        scoreName: 'product_comment[rate]'
+    });
+</script>

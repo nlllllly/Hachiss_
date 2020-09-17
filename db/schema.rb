@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_073237) do
   create_table "product_comments", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "customer_id", null: false
+    t.float "rate", default: 0.0, null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
