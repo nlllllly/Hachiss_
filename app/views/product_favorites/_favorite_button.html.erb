@@ -1,5 +1,5 @@
-<%# 会員でログインしないと表示されない %>
 <% if customer_signed_in? %>
+    <%# 会員でログインしている場合 %>
     <% if product.favorited_by?(current_customer) %>
         <%# 済みのボタン %>
         <%= link_to product_product_favorites_path(product), method: :delete, remote: true, class:"btn btn-sm btn-info col-lg-12" do %>
@@ -11,5 +11,10 @@
         <%= link_to product_product_favorites_path(product), method: :post, remote: true, class:"btn btn-sm btn-warning col-lg-12" do %>
             お気に入り登録 <i class="far fa-star"></i>
         <% end %>
+    <% end %>
+<% else %>
+    <%# ゲストの場合 %>
+    <%= link_to new_customer_session_path, class: "btn btn-sm btn-warning col-lg-12" do %>
+        お気に入り登録 <i class="far fa-star"></i>
     <% end %>
 <% end %>

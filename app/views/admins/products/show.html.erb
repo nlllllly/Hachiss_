@@ -16,45 +16,66 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="mt-4"></div>
+                        <div class="pt-4"></div>
 
                         <h6>商品名</h6>
                         <h5><%= @product.name %></h5>
 
-                        <div class="mt-5"></div>
+                        <div class="pt-5"></div>
 
                         <h6>商品価格</h6>
                         <h5><%= @product.add_tax_price.to_s(:delimited) %> 円 /（税別 <%= @product.price.to_s(:delimited) %> 円）</h5>
 
-                        <div class="mt-5"></div>
+                        <div class="pt-5"></div>
 
                         <h6>商品ジャンル</h6>
                         <p><%= @product.genre.name %></p>
 
-                        <div class="mt-4"></div>
+                        <div class="pt-4"></div>
 
                         <h6>商品説明</h6>
                         <p><%= @product.description %></p>
 
-                        <div class="mt-4"></div>
+                        <div class="pt-4"></div>
 
                         <h6>生産者名</h6>
-                        <p><%= @product.producer.name %></p>
+                        <p>
+                            <%= link_to admins_producer_path(@product.producer) do %>
+                                <%= @product.producer.name %>
+                            <% end %>
+                        </p>
 
-                        <div class="mt-4"></div>
+                        <div class="pt-4"></div>
 
                         <h6>販売状況</h6>
                         <p><%= @product.sale_status_i18n %></p>
 
-                        <div class="mt-4"></div>
+                        <div class="pt-4"></div>
                         <%= link_to "編集する", edit_admins_product_path, class:"btn btn-sm btn-success col-lg-5" %>
-                        <div class="mt-4"></div>
+                        <div class="pt-4"></div>
                         <%= link_to "商品を削除する", admins_product_path(@product), class:"btn btn-sm btn-danger col-lg-5", method:"delete", data:{ confirm: "本当に削除しますか？" } %>
 
                     </div>
+
+                    <%# コメント 一覧 %>
+                    <div class="col-lg-12">
+                        <div class="pt-4"></div>
+                        <h6>商品へののコメント / <%= @product.product_comments.count %> 件</h6>
+                        <%# コメントが存在している時だけコメントを表示 %>
+                        <% if @product.product_comments.exists? %>
+                            <%= render 'product_comments/comment_form', product: @product %>
+                        <% else %>
+                            <div class="text-center pt-5">
+                                コメントはまだありません
+                            </div>
+                        <% end %>
+                        <div class="pt-4"></div>
+                    </div>
+                    <%# コメント 一覧 終わり %>
+
                 </div>
 
-                <div class="mt-4"></div>
+                <div class="pt-4"></div>
                 <%= link_to "戻る", admins_products_path, class:"" %>
             </div>
         </div>

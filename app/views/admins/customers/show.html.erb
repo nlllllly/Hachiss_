@@ -109,6 +109,32 @@
                         </div>
                     <% end %>
                     <%# 会員利用状況の選択フォーム 終わり %>
+                
+                    <div class="pt-3"></div>
+                    <div class="border-top border-secondary"></div>
+                    <div class="pb-3"></div>
+
+                    <h6>登録済み 配送先一覧</h6>
+                    <table class="table table-bordered">
+                    <thead style="color: #FFFFFF; background-color: #5191c2;">
+                        <tr>
+                            <th>氏名（漢字）</th>
+                            <th>氏名（カナ）</th>
+                            <th>郵便番号</th>
+                            <th>住所</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color: #5191c2; background-color: #fffffe;">
+                        <% @customer.shippings.each do |shipping| %>
+                            <tr>
+                                <td><%= shipping.full_name %></td>
+                                <td><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></td>
+                                <td><%= shipping.postcode %></td>
+                                <td><%= shipping.shipping_full_address %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
 
                 </div>
                 <%# 会員情報 終わり %>

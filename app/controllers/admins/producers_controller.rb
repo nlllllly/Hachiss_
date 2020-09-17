@@ -20,6 +20,8 @@ class Admins::ProducersController < ApplicationController
     end
     
     def show
+        # 商品の中でも生産者に紐づくものだけを表示
+        @products = Product.where(producer_id: @producer.id).page(params[:page]).per(6)
     end
 
     def edit

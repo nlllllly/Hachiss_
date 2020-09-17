@@ -7,24 +7,34 @@
                 <div class="col-12 col-md-3 col-sm-6 col-xs-6">
                     <h6 style="color: #bae8e8;">Hachiss</h6>
                     <ul class="list-unstyled">
-                        <li><%= link_to "ホーム", root_path, :style=>"color: #fffffe;" %></li>
+                        <li><%= link_to "ホーム", root_path, style:"color: #fffffe;" %></li>
                         <div class="mt-2"></div>
-                        <li><%= link_to "商品一覧", products_path, :style=>"color: #fffffe;" %></li>
+                        <% unless customer_signed_in? %>
+                            <li><%= link_to "会員ログイン", new_customer_session_path, style:"color: #fffffe;" %></li>
+                            <div class="mt-2"></div>
+                            <li><%= link_to "会員登録", new_customer_registration_path, style:"color: #fffffe;" %></li>
+                            <div class="mt-2"></div>
+                        <% end %>
+                        <% if customer_signed_in? %>
+                            <li><%= link_to "ショッピングカート", cart_items_path, style:"color: #fffffe;" %></li>
+                            <div class="mt-2"></div>
+                            <li><%= link_to "マイページ", customers_my_page_path, style:"color: #fffffe;" %></li>
+                            <div class="mt-2"></div>
+                        <% end %>
+                        <li><%= link_to "商品一覧", products_path, style:"color: #fffffe;" %></li>
                         <div class="mt-2"></div>
-                        <li><%= link_to "ショッピングカート", cart_items_path, :style=>"color: #fffffe;" %></li>
+                        <li><%= link_to "生産者一覧", producers_path, style:"color: #fffffe;" %></li>
                         <div class="mt-2"></div>
-                        <li><%= link_to "生産者さんを見る", producers_path, :style=>"color: #fffffe;" %></li>
-                        <div class="mt-2"></div>
-                        <li><%= link_to "利用規約", root_path, :style=>"color: #fffffe;" %></li>
+                        <li><%= link_to "利用規約", root_path, style:"color: #fffffe;" %></li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-3 col-sm-6 col-xs-6">
-                    <h6 style="color: #ffd803;">管理者用</h6>
-                    <ul class="list-unstyled">
-                        <li><%= link_to "管理者はこちら", new_admin_session_path, :style=>"color: #fffffe;" %> </li>
-                        <div class="mt-2"></div>
-                        <li><%= link_to "管理者の追加はこちら", new_admin_registration_path, :style=>"color: #fffffe;" %></li>
-                    </ul>
+                    <% unless customer_signed_in? %>
+                        <h6 style="color: #ffd803;">管理者用</h6>
+                        <ul class="list-unstyled">
+                            <li><%= link_to "管理者ログイン", new_admin_session_path, style:"color: #fffffe;" %> </li>
+                        </ul>
+                    <% end %>
                 </div>
                 <div class="col-12 col-md-6 col-sm-12 col-xs-12">
                     <div class="footer-logo float-right"></div>
@@ -35,7 +45,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-white">
-                        © 2020 Hachijo-shop. All Rights Reserved
+                        © 2020 Hachiss. All Rights Reserved
                     </div>
                     <div class="col-md-6 text-white">
                         <ul class="list-inline">

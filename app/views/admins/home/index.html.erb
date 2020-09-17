@@ -5,24 +5,53 @@
             <div class="pt-5"></div>
         </div>
         <div class="col-lg-9 mx-auto">
-                
-
-            <div class="btn btn-info col-md-3">
-                <h4>商品管理</h4>
-            </div>
             
-            <div class="btn btn-danger col-md-3">
-                <h4>生産者管理</h4>
-            </div>
+            <div class="row mx-auto">
+            
+                <%= link_to admins_products_path, class:"btn btn-primary col-lg-3 mb-4" do %>
+                    <div class="pt-4"></div>
+                    <h1><i class="fas fa-gift"></i></h1>
+                    <h3 style="font-size: 20px;">商品管理</h3>
+                    <div class="pb-3"></div>
+                <% end %>
 
-            <div class="btn btn-warning col-md-3">
-                <h4>注文管理</h4>
-            </div>
+                <div class="col-lg-1"></div>
+            
+                <%= link_to admins_genres_path, class:"btn btn-info col-lg-3 mb-4" do %>
+                    <div class="pt-4"></div>
+                    <h1><i class="fas fa-folder-open"></i></h1>
+                    <h3 style="font-size: 20px;">ジャンル管理</h3>
+                    <div class="pb-3"></div>
+                <% end %>
 
-            <div class="btn btn-success col-md-3">
-                <h4>会員管理</h4>
-            </div>
+                <div class="col-lg-1"></div>
 
+                <%= link_to admins_producers_path, class:"btn btn-danger col-lg-3 mb-4" do %>
+                    <div class="pt-4"></div>
+                    <h1><i class="fas fa-user-tie"></i></h1>
+                    <h3 style="font-size: 20px;">生産者管理</h3>
+                    <div class="pb-3"></div>
+                <% end %>
+                
+                <div class="col-lg-1"></div>
+
+                <%= link_to admins_orders_path, class:"btn btn-warning col-lg-3 mb-4" do %>
+                    <div class="pt-4"></div>
+                    <h1><i class="fas fa-clipboard"></i></h1>
+                    <h3 style="font-size: 20px;">注文管理</h3>
+                    <div class="pb-3"></div>
+                <% end %>
+
+                <div class="col-lg-1"></div>
+
+                <%= link_to admins_customers_path, class:"btn btn-success col-lg-3 mb-4" do %>
+                    <div class="pt-4"></div>
+                    <h1><i class="fas fa-users"></i></h1>
+                    <h3 style="font-size: 20px;">会員管理</h3>
+                    <div class="pb-3"></div>
+                <% end %>
+
+            </div>
 
 
             <div class="pb-5"></div>

@@ -34,8 +34,8 @@
                                 <p><%= product.add_tax_price.to_s(:delimited) %> 円</p>
                             </div>
 
-                            <div class="action">
-                                <%# 商品お気に入りボタン %>
+                            <%# 商品お気に入りボタン %>
+                            <div class="buttons_<%= product.id %>">
                                 <%= render 'product_favorites/favorite_button', product: product %>
                             </div>
 
