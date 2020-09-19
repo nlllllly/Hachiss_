@@ -197,12 +197,16 @@
 
                 </div>
             </div>
-
         </div>
 
-        <%# サイドバー %>
-        <%= render 'layouts/sidebar', genres: @genres, producers: @producers %>
 
+
+        <div class="col-lg-2 py-4" style="background-color: #e6ffff;">
+            <%# サイドバー %>
+            <%= render 'layouts/sidebar', genres: @genres, producers: @producers %>
+            <%# サイドバー 終わり %>
+        </div>
+        
     </div>
 </div>
 

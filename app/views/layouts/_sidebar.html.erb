@@ -1,56 +1,53 @@
-<%# サイドバー %>
-<div class="col-lg-2 py-4" style="background-color: #e6ffff;">
-
-    <%# 検索フォーム %>
-    <div class="form-group py-4">
-        <h6>商品検索</h6>
-        <%= render 'products/search_form' %>
-    </div>
-    <%# 検索フォーム 終わり %>
-
-    <div style="border-top: 2px solid #272343;"></div>
-
-    <%# カテゴリ検索 %>
-    <div class="form-group py-4">
-        <h6>ジャンル別検索</h6>
-        <div class="pt-2"></div>
-        <% genres.each do |genre| %>
-            <%= link_to genre_path(genre) do %>
-                <div class="text-center"><%= genre.name %></div>
-                <div class="pb-1"></div>
-            <% end %>
-        <% end %>    
-    </div>
-    <%# カテゴリ検索 終わり %>
-
-    <div style="border-top: 2px solid #272343;"></div>
-
-    <%# 生産者別検索 %>
-    <div class="form-group py-4">
-        <h6>生産者別検索</h6>
-        <div class="pt-2"></div>
-        <% producers.each do |producer| %>
-            <%= link_to producer_path(producer) do %>
-                <div class="text-center"><%= producer.name %></div>
-                <div class="pb-1"></div>
-            <% end %>
-        <% end %>    
-    </div>
-    <%# 生産者別検索 終わり %>
-
-    <div style="border-top: 2px solid #272343;"></div>
-
-    <%# お気に入り商品 %>
-    <div class="form-group py-4">
-        <h6>お気に入り商品</h6>
-    </div>
-    <%# お気に入り商品 終わり %>
-
-
-    <div style="border-top: 2px solid #272343;"></div>
-
-
-
+<%# 検索フォーム %>
+<div class="form-group py-4">
+    <h6>商品検索</h6>
+    <%= render 'products/search_form' %>
 </div>
-<%# サイドバー 終わり %>
+<%# 検索フォーム 終わり %>
 
+
+<div style="border-top: 2px solid #272343;"></div>
+
+
+<%# カテゴリ検索 %>
+<div class="form-group py-4">
+    <h6>ジャンル別検索</h6>
+    <div class="pt-2"></div>
+    <% genres.each do |genre| %>
+        <%= link_to genre_path(genre) do %>
+            <div class="text-center"><%= genre.name %></div>
+            <div class="pb-1"></div>
+        <% end %>
+    <% end %>    
+</div>
+<%# カテゴリ検索 終わり %>
+
+
+<div style="border-top: 2px solid #272343;"></div>
+
+
+<%# 生産者別検索 %>
+<div class="form-group py-4">
+    <h6>生産者別検索</h6>
+    <div class="pt-2"></div>
+    <% producers.each do |producer| %>
+        <%= link_to producer_path(producer) do %>
+            <div class="text-center"><%= producer.name %></div>
+            <div class="pb-1"></div>
+        <% end %>
+    <% end %>    
+</div>
+<%# 生産者別検索 終わり %>
+
+
+<div style="border-top: 2px solid #272343;"></div>
+
+
+<%# お気に入り商品 %>
+<div class="form-group py-4">
+    <h6>お気に入り商品</h6>
+</div>
+<%# お気に入り商品 終わり %>
+
+
+<div style="border-top: 2px solid #272343;"></div>

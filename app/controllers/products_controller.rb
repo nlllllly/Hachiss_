@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
                 format.json
             end
         else
-            # もしもヒットした商品の数をカウントして0だったらヒットしなかった表示を出す
             @search_products = Product.none
         end
 
