@@ -18,22 +18,19 @@ class ProductsController < ApplicationController
     end
 
     def search
-        # 通常は入力されたキーワードを新しい順で表示
         @keyword = params[:keyword]
-        sort = params[:sort] || "created_at DESC"
 
         if @keyword.present?
-            @search_products = Product.where('name LIKE(?) OR description LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").order(sort).page(params[:page]).per(20)
+            @search_products = Product.where('name LIKE(?) OR description LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").page(params[:page]).per(20)
+            respond_to do |format|
+                format.html 
+                format.json
+            end
         else
             # もしもヒットした商品の数をカウントして0だったらヒットしなかった表示を出す
             @search_products = Product.none
         end
 
-        # @search_products = Product.where('name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(20)
-        # respond_to do |format|
-        #   format.html 
-        #   format.json 
-        # end
     end
     
     

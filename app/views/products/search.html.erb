@@ -4,7 +4,7 @@
         <%# メイン %>
         <div class="col-lg-10 p-4">
 
-            <h3>商品検索結果 「 <%= params[:search] %> 」</h3>
+            <h3>商品検索結果 「 <%= params[:keyword] %> 」</h3>
             <div class="pb-2"></div>
 
             <div class="p-3" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
@@ -37,10 +37,18 @@
                                     <p><%= product.add_tax_price.to_s(:delimited) %> 円</p>
                                 </div>
 
-                                <div class="">
-                                    <p class="btn btn-sm btn-warning col-lg-12">お気に入り登録する <i class="far fa-star"></i></p>
-                                    <p class="btn btn-sm btn-info col-lg-12">お気に入り登録済み <i class="fas fa-star"></i></p>
+                                <div class="text-center">
+                                    <%= render 'products/rate_average', product: product %>
                                 </div>
+
+                                <div class="pt-2"></div>
+
+                                <%# 商品お気に入りボタン %>
+                                <div class="buttons_<%= product.id %>">
+                                    <%= render 'product_favorites/favorite_button', product: product %>
+                                </div>
+
+                                <div class="pt-2"></div>
 
                                 <div class="action">
                                     <%= link_to "詳細をみる", product_path(product), class:"btn btn-sm btn-hachiss col-lg-12" %>

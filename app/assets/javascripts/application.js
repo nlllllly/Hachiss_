@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require rails-ujs
 //= require jquery
 //= require popper
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require bootstrap-sprockets
@@ -25,7 +25,6 @@ $(function(){
   setTimeout("$('#flash-op').fadein('slow')", 500) 
   setTimeout("$('#flash-op').fadeOut('slow')", 10000) 
 })
-
 
 // ページトップへ「戻るボタン」（上がボタン自体の表示と非表示・下がクリックした時の動作）
 $(function() {

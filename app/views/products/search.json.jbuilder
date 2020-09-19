@@ -1,3 +1,4 @@
 json.array! @search_products do |product| 
-    json.name product.name
-  end
+  json.id product.id
+  json.name product.name
+end
