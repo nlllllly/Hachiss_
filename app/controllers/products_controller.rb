@@ -4,8 +4,15 @@ class ProductsController < ApplicationController
     before_action :set_sidebar, only: [:index, :show, :search]
 
     def index
-        # 販売停止中以外の商品を表示する
-        @products = Product.where.not(sale_status: 0).page(params[:page]).per(20)
+        selection = params[:sort]
+
+        if selection.present?
+            @products = Product.sort(selection).page(params[:page]).per(20)
+        else
+            # 通常通りに販売停止中以外の商品を表示する
+            @products = Product.where.not(sale_status: 0).page(params[:page]).per(20)
+        end
+
     end
     
     def show
@@ -21,7 +28,7 @@ class ProductsController < ApplicationController
         @keyword = params[:keyword]
 
         if @keyword.present?
-            @search_products = Product.where('name LIKE(?) OR description LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").page(params[:page]).per(20)
+            @search_products = Product.where.not(sale_status: 0).where('name LIKE(?) OR description LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").page(params[:page]).per(20)
             respond_to do |format|
                 format.html 
                 format.json

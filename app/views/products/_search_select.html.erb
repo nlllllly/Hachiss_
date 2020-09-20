@@ -1,9 +1,0 @@
-<div class="row">
-    <div class="col-lg-10"></div>
-    <div class="col-lg-2">
-        <%= form_with(url: products_path, method: :get, local: true, class: "input-group") do |f| %>
-            <%= f.select :sort_order, [["新しい順", value: "created_at_desc"], ["価格の安い順", value: "price_desc"], ["価格の高い順", value: "price_asc"]], {prompt: false}, class:"form-control form-control-sm" %>
-            <%= f.submit %>
-        <% end %>
-    </div>
-</div>

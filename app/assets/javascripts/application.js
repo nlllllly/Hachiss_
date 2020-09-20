@@ -45,18 +45,3 @@ $(function() {
   });
 });
 
-
-// メインアイコン
-$(function() {
-  $('#main-fadein').hide().fadeIn(4000);
-
-  $(window).scroll(function(){
-    if ($(this).scrollTop() > 400) {
-      $('#main-fadein').fadeOut(1200);
-    } else {
-      $('#main-fadein').fadeIn(1200);
-    }
-  });
-});
-  
-

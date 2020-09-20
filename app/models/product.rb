@@ -44,16 +44,17 @@ class Product < ApplicationRecord
     # ソート検索用
     def self.sort(selection)
         case selection
-        # 新しい順
         when 'created_at_desc'
+            # 新しい順
             return where.not(sale_status: 0).order(created_at: :DESC)
-        # 価格が安い順
         when 'price_desc'
-            return where.not(sale_status: 0).order(price: :DESC)
-        # 価格が高い順
-        when 'price_asc'
+            # 価格が安い順
             return where.not(sale_status: 0).order(price: :ASC)
+        when 'price_asc'
+            # 価格が高い順
+            return where.not(sale_status: 0).order(price: :DESC)
         end
     end
+    
 
 end
