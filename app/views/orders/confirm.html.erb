@@ -38,7 +38,7 @@
                                                 <%= attachment_image_tag cart_item.product, :image, :fill, 45, 45, format: 'png',fallback: "no_image.png",size:'45x45' %>
                                                 <%= cart_item.product.name %>
                                             </td>
-                                            <td><%= cart_item.product.add_tax_price.to_s(:delimited) %></td>
+                                            <td><%= cart_item.product.add_tax_price.to_s(:delimited) %> 円</td>
                                             <td><%= cart_item.quantity %></td>
                                             <td>
                                                 <%= cart_item.subtotal.to_s(:delimited) %> 円
@@ -75,7 +75,7 @@
                                     <td style="background-color: #fffffe;">
                                         <%# 商品の小計の合計と送料を合わせた金額 %>
                                         <% claimed = sum_all + @order.delivery_fee.to_i %>
-                                        <%= claimed.to_s(:delimited) %> 円
+                                        <strong><%= claimed.to_s(:delimited) %> 円</strong>
                                     </td>
                                 </tr>
                             </table>

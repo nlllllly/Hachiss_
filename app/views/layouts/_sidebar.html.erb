@@ -12,13 +12,19 @@
 <%# カテゴリ検索 %>
 <div class="form-group py-4">
     <h6>ジャンル別検索</h6>
-    <div class="pt-2"></div>
-    <% genres.each do |genre| %>
-        <%= link_to genre_path(genre) do %>
-            <div class="text-center"><%= genre.name %></div>
-            <div class="pb-1"></div>
-        <% end %>
-    <% end %>    
+    <div class="pt-3"></div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-blm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            「ジャンル」を選択
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <% genres.each do |genre| %>
+                <%= link_to genre_path(genre) do %>
+                    <div class="dropdown-item"><%= genre.name %></div>
+                <% end %>
+            <% end %>    
+        </div>
+    </div>
 </div>
 <%# カテゴリ検索 終わり %>
 
@@ -29,13 +35,20 @@
 <%# 生産者別検索 %>
 <div class="form-group py-4">
     <h6>生産者別検索</h6>
-    <div class="pt-2"></div>
-    <% producers.each do |producer| %>
-        <%= link_to producer_path(producer) do %>
-            <div class="text-center"><%= producer.name %></div>
-            <div class="pb-1"></div>
-        <% end %>
-    <% end %>    
+    <div class="pt-3"></div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-blm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            「 生産者 」を選択
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <% producers.each do |producer| %>
+                <%= link_to producer_path(producer) do %>
+                    <div class="dropdown-item"><%= producer.name %></div>
+                <% end %>
+            <% end %>    
+        </div>
+    </div>
+    
 </div>
 <%# 生産者別検索 終わり %>
 
@@ -43,11 +56,24 @@
 <div style="border-top: 2px solid #272343;"></div>
 
 
-<%# お気に入り商品 %>
+<%# お気に入り・フォロー %>
 <div class="form-group py-4">
     <h6>お気に入り商品</h6>
+    <%= link_to product_favorites_path, class:"btn btn-sm btn-hachiss" do %>
+         お気に入りした商品 <i class="fas fa-star"></i>
+    <% end %>
 </div>
-<%# お気に入り商品 終わり %>
+
+<div style="border-top: 2px solid #272343;"></div>
+
+<div class="form-group py-4">
+    <h6>フォロー中の生産者</h6>
+    <%= link_to producer_favorites_path, class:"btn btn-sm btn-hachiss" do %>
+        <i class="fas fa-user-check"></i> フォロー中の生産者
+    <% end %>
+</div>
+<%# お気に入り・フォロー 終わり %>
 
 
 <div style="border-top: 2px solid #272343;"></div>
+

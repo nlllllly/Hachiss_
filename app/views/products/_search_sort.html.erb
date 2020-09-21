@@ -2,14 +2,8 @@
     <div class="col-lg-9"></div>
     <div class="col-lg-3">
         <%= form_with(url: products_path, method: :get, local: true, class: "input-group") do |f| %>
-            
-            <%= f.select :sort, 
-                [["新しい順", "created_at_desc"],["価格の安い順", "price_desc"], ["価格の高い順", "price_asc"]],
-                #  ["人気順", "favorite_desc"], 
-                {prompt: "ソート"}, class:"form-control form-control-sm"
-            %>
+            <%= f.select :sort, [["新しい順", "created_at_desc"],["価格の安い順", "price_desc"], ["価格の高い順", "price_asc"]], {prompt: "ソート"}, class:"form-control form-control-sm" %>
             <%= f.submit "並び替え", class:"btn btn-sm btn-light" %>
-
         <% end %>
     </div>
 </div>

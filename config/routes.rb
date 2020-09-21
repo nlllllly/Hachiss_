@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
   # 会員情報
-    # resource :customers, only: [:update]
   get 'customers/my_page' => 'customers#show'
   get 'customers/unsubscribe' => 'customers/unsubscribe'
   patch 'customers/withdraw' => 'customers/withdraw'
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
     resource :product_favorites, only: [:create, :destroy]
     resources :product_comments, only: [:create, :destroy]
   end
+  get 'product_favorites' => 'products#favorite'
   get 'search' => 'products#search'
   # 商品ジャンル関連
   resources :genres, only: [:show]
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :producers, only: [:show, :index] do
     resource :producer_favorites, only: [:create, :destroy]
   end
+  get 'producer_favorites' => 'producers#favorite'
   # 注文関連
   resources :orders, only: [:new, :index, :create, :show]
   post 'orders/confirm' => 'orders#confirm'
@@ -54,9 +55,7 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'home' => 'home#index'
     resources :customers, only: [:index, :show, :update]
-    resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-      resources :product_comments, only: [:destroy]
-    end
+    resources :products, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :producers, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :orders, only: [:index, :show, :update]

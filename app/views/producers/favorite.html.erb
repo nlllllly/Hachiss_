@@ -3,27 +3,30 @@
 
         <%# メイン %>
         <div class="col-lg-10 p-4">
-            <h3>生産者一覧</h3>
+            <h3>フォロー中の生産者</h3>
             <div class="pb-5"></div>
 
             <div class="p-3" style="background-color: #f2f2f2; border: 3px solid #272343; border-radius: 2px;">
                 <div class="row p-4">
-
+                    
                     <%# 生産者個々の表示 %>
-                    <% @producers.each do |producer| %>
+                    <% current_customer.favorite_producers.each do |producer| %>
                         <div class="col-lg-6 pt-3">
 
                             <div class="row">
                                 <div class="col-lg-6">
+
                                     <div class="text-center">
                                         <%= link_to producer_path(producer) do %>
                                             <%= attachment_image_tag producer, :image, :fill, 180, 180, class: "border", fallback: "pic_default/no-image.jpg", size:'180x180' %>
                                         <% end %>
                                     </div>
+                                
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="pt-4"></div>
+
                                     <div class="text-center">
                                         <h5>
                                             <%= link_to producer_path(producer) do %><%= producer.name %><% end %>
@@ -37,7 +40,9 @@
                                     </div>
 
                                     <div class="pt-2"></div>
-                                    <%= link_to "詳細をみる", producer_path(producer), class:"btn btn-sm btn-blm col-lg-12" %>
+
+                                    <%= link_to "生産者の詳細をみる", producer_path(producer), class:"btn btn-sm btn-blm col-lg-12" %>
+
                                 </div>
 
                             </div>
@@ -54,17 +59,7 @@
             </div>
 
 
-            <%# ページネーション %>
-            <div class="row">
-                <div class="mx-auto">
-                    <div class="pt-4"></div>
-                    <%= paginate @producers %>
-                </div>
-            </div>
-            <%# ページネーション 終わり %>
         </div>
-                
-        
         
         <div class="col-lg-2 py-4" style="background-color: #e6ffff;">
             <%# サイドバー %>
@@ -72,6 +67,5 @@
             <%# サイドバー 終わり %>
         </div>
     
-        
     </div>
 </div>

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
     before_action :authenticate_customer!
     before_action :set_order, only: [:show]
+    before_action :set_customer, only: [:new, :create, :confirm]
     before_action :ensure_correct_order, only: [:show]
 
     def index
@@ -95,6 +96,10 @@ class OrdersController < ApplicationController
   
     def set_order
         @order = Order.find(params[:id])
+    end
+    
+    def set_customer
+        @customer = current_customer
     end
     
     def ensure_correct_order

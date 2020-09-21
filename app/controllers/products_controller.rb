@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-
+	before_action :authenticate_customer!, only: [:favorite]
     before_action :set_product, only: [:show]
-    before_action :set_sidebar, only: [:index, :show, :search]
+    before_action :set_sidebar, only: [:index, :show, :search, :favorite]
 
     def index
         selection = params[:sort]
@@ -38,7 +38,11 @@ class ProductsController < ApplicationController
         end
 
     end
-    
+
+    def favorite
+
+    end
+
     
     private
     def set_product
