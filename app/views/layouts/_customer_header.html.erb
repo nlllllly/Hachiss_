@@ -52,7 +52,6 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <%= link_to "マイページ", customers_my_page_path, class:"dropdown-item" %>
-                        <%= link_to "お気に入り商品", root_path, class:"dropdown-item" %>
                         <%= link_to "ショッピングカート", cart_items_path, class:"dropdown-item" %>
                         <div class="dropdown-divider"></div>
                         <%= link_to "サインアウト", destroy_customer_session_path, method: 'DELETE', class:"dropdown-item" %>

@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
         @cart_item = CartItem.new
         @product_comment = ProductComment.new
         # 販売停止中以外の商品で、生産者のidが紐づくものだけをランダムに6つ表示する
-        @products = Product.where.not(sale_status: 0).where(producer_id: @product.producer_id).order("RANDOM()").limit(6)
+        @products = Product.where.not(sale_status: 0).where(producer_id: @product.producer_id).order(Arel.sql("RANDOM()")).limit(6)
         # 本番環境では「RANDOM()」が使えないためデプロイ時に注意
         # @products = Product.where.not(sale_status: 0).page(params[:page]).per(6)
     end
