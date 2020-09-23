@@ -5,9 +5,9 @@ class Admins::HomeController < ApplicationController
     # 今日の注文
     @today_orders = Order.where(created_at: Time.zone.now.all_day).page(params[:page])
     # 今週の注文
-    @weekly_orders = Order.where(created_at: 1.week.ago.now.all_day).page(params[:page])
+    # @weekly_orders = Order.where(created_at: 1.week.ago.now.all_day).page(params[:page])
     # 今月の注文
-    @monthly_orders = Order.where(created_at: 1.month.ago.now.all_day).page(params[:page])
+    # @monthly_orders = Order.where(created_at: 1.month.ago.now.all_day).page(params[:page])
   end
 
 end

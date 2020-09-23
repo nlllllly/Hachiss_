@@ -7,8 +7,8 @@ class HomeController < ApplicationController
         @rank_products = Product.where.not(sale_status: 0).find(OrderDetail.group(:product_id).order('count(product_id) desc').limit(5).pluck(:product_id))
         # 生産者をランダムに5つだけ表示
         @rand_producers = Producer.where(producer_status: 1).order(Arel.sql("RANDOM()")).limit(5)
-        # 本番環境では「RANDOM()」が使えないためデプロイ時に注意
-        # @rand_producers = Producer.where(producer_status: 1).page(params[:page]).per(6)
+        # 本番環境はRANDを使用
+        # @rand_producers = Producer.where(producer_status: 1).order(Arel.sql("RAND()")).limit(5)
     end
 
 

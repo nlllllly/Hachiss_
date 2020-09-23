@@ -3,7 +3,7 @@ class Admins::ProducersController < ApplicationController
     before_action :set_producer, only: [:show, :edit, :update, :destroy]
     
     def index
-        @producers = Producer.page(params[:page]).per(30)
+        @producers = Producer.page(params[:page]).per(15)
     end
 
     def new
