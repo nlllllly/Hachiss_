@@ -1,7 +1,8 @@
 <%= form_with(model: [product, product_comment], url: product_product_comments_path(product), local: true) do |f| %>
+    <%= render 'layouts/error_messages', object: f.object %>
+
     <%= f.text_area :comment, rows:'5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
     <div class="pt-2"></div>
-
     <div id="rating-form">
         <label>評価：</label>
     </div>
@@ -14,7 +15,8 @@
 
 <script>
     $('#rating-form').raty({
-        path: '/assets/',
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
         // ここのスコアネームで「product_comment」モデルの「rate」カラムに送ることを設定
         scoreName: 'product_comment[rate]'
     });
