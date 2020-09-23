@@ -5,7 +5,8 @@
     <div class="pt-2"></div>
     <div id="rating-form">
         <label>評価：</label>
-        <%= f.hidden_field :rate %>
+        <%# scoreNameの値をhidden_fieldでカラムに送っている %>
+        <%= f.hidden_field :rate, :value => 'score' %>
     </div>
 
     <div class="action text-right">
@@ -18,5 +19,6 @@
     $('#rating-form').raty({
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'product_comment[rate]'
     });
 </script>
