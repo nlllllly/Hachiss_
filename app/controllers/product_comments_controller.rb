@@ -15,7 +15,7 @@ class ProductCommentsController < ApplicationController
     
     def destroy
         ProductComment.find_by(id: params[:id], product_id: params[:product_id]).destroy
-        redirect_to  request.referer, notice: "商品のコメントを削除しました"
+        redirect_to request.referer, notice: "商品のコメントを削除しました"
     end
     
 

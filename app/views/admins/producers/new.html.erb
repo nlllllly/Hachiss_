@@ -9,7 +9,7 @@
                 <h4>生産者新規登録</h4>
                 <div class="pt-5"></div>
 
-                <%= form_with(model: @producer, url: admins_producers_path) do |f| %>
+                <%= form_with(model: @producer, url: admins_producers_path, local: true) do |f| %>
                     <%= render 'layouts/error_messages', object: f.object %>
                     <div class="form-row">
                         <div class="col-lg-7">

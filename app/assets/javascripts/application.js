@@ -22,7 +22,6 @@
 
 // flash 表示用
 $(function(){
-  setTimeout("$('#flash-op').fadein('slow')", 500) 
   setTimeout("$('#flash-op').fadeOut('slow')", 10000) 
 })
 

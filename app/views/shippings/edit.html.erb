@@ -10,7 +10,7 @@
                 <div style="border-top: 1px solid #272343;"></div>
                 <div class="pb-4"></div>
 
-                <%= form_with(model: @shipping, url: shipping_path(@shipping)) do |f| %>
+                <%= form_with(model: @shipping, url: shipping_path(@shipping), local: true) do |f| %>
                     <%= render 'layouts/error_messages', object: f.object %>
 
                     <div class="form-row">

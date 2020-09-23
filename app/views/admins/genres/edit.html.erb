@@ -11,7 +11,7 @@
                 <h4>ジャンル情報編集</h4>
                 <div class="pt-5"></div>
 
-                <%= form_with(model: @genre, url: admins_genre_path(@genre)) do |f| %>
+                <%= form_with(model: @genre, url: admins_genre_path(@genre), local: true) do |f| %>
                     <%= render 'layouts/error_messages', object: f.object %>
                     <div class="form-row">
                         <div class="col-lg-12">

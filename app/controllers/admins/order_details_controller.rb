@@ -14,6 +14,7 @@ class Admins::OrderDetailsController < ApplicationController
                 @order_detail.update(order_detail_params)
                 redirect_to request.referer, notice: "商品ステータスを更新しました"
             end
+            
         else
             @order = Order.find(params[:id])
             @customer = @order.customer_id

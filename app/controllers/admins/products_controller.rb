@@ -3,9 +3,15 @@ class Admins::ProductsController < ApplicationController
     before_action :set_product, only: [:show ,:edit, :update, :destroy]
 
     def index
-        @products = Product.page(params[:page]).per(15)
+        # もし、検索ワードがあれば、検索結果を表示 / なければ通常の表示
+        @keyword = params[:keyword]
+        if @keyword.present?
+            @products = Product.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(15)
+        else
+            @products = Product.page(params[:page]).per(15)
+        end
     end
-
+    
     def new
         @product = Product.new
     end
@@ -32,11 +38,12 @@ class Admins::ProductsController < ApplicationController
             render :edit, alert: "変更を保存できませんでした"
         end
     end
-
+    
     def destroy
         if @product.destroy
             redirect_to admins_products_path, notice: "削除が完了しました"
         else
+            @products = Product.page(params[:page]).per(15)
             render :index, alert: "削除できませんでした"
         end
     end

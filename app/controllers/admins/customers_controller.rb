@@ -3,7 +3,13 @@ class Admins::CustomersController < ApplicationController
     before_action :set_customer, only: [:show, :update]
 
     def index
-        @customers = Customer.page(params[:page]).per(15)
+        # もし、検索ワードがあれば、検索結果を表示 / なければ通常の表示
+        @keyword = params[:keyword]
+        if @keyword.present?
+            @customers = Customer.where('last_name LIKE(?) or first_name LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").page(params[:page]).per(15)
+        else
+            @customers = Customer.page(params[:page]).per(15)
+        end
     end
 
     def show

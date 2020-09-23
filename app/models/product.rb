@@ -46,13 +46,13 @@ class Product < ApplicationRecord
         case selection
         when 'created_at_desc'
             # 新しい順
-            return where.not(sale_status: 0).order(created_at: :DESC)
+            return order(created_at: :DESC)
         when 'price_desc'
             # 価格が安い順
-            return where.not(sale_status: 0).order(price: :ASC)
+            return order(price: :ASC)
         when 'price_asc'
             # 価格が高い順
-            return where.not(sale_status: 0).order(price: :DESC)
+            return order(price: :DESC)
         end
     end
     

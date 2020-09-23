@@ -18,7 +18,7 @@ class ShippingsController < ApplicationController
         if @shipping.save
             redirect_to shippings_path, notice: "登録が完了しました"
         else
-            redirect_to new_shipping_path, alert: "登録できませんでした"
+            render :new, alert: "登録できませんでした"
         end
     end
 
@@ -29,7 +29,7 @@ class ShippingsController < ApplicationController
         if @shipping.update(shipping_params)
             redirect_to shippings_path, notice: "変更を保存しました"
         else
-            redirect_to edit_shipping_path, alert: "変更を保存できませんでした"
+            render :edit, alert: "変更を保存できませんでした"
         end
     end
     
@@ -58,7 +58,7 @@ class ShippingsController < ApplicationController
             :address_street,
             :address_building
             )
-        end
+    end
 
 
     def set_shipping

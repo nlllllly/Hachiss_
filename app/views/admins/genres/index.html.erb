@@ -9,7 +9,7 @@
                 <h4>ジャンル新規登録</h4>
                 <div class="pt-5"></div>
 
-                <%= form_with(model: @genre, url: admins_genres_path) do |f| %>
+                <%= form_with(model: @genre, url: admins_genres_path, local: true) do |f| %>
                     <%= render 'layouts/error_messages', object: f.object %>
                     <div class="form-row">
                         <div class="col-lg-3">

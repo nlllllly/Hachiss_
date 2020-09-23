@@ -2,6 +2,24 @@
     <div class="row">
         <div class="col-lg-9 mx-auto">
             <h3>CUSTOMERS</h3>
+
+            <%# 会員検索フォーム %>
+            <div class="form-row">
+                <div class="col-lg-4">
+                    <%= form_with(url: admins_customers_path, method: :get, local: true, class: "input-group") do |f| %>
+                        <%= f.text_field :keyword, id: "", class:"form-control form-control-sm input-group-prepend", placeholder:"会員を検索" %>
+                        <div class="input-group-append">
+                            <%= f.button "", type:"submit", class:"btn btn-sm btn-dark" do %>
+                                <i class="fas fa-search"></i>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <%# 会員検索フォーム 終わり %>
+
+            <div class="pt-4"></div>
+
         </div>
 
         <div class="col-lg-9 mx-auto my-4">

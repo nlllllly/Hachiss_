@@ -3,9 +3,15 @@ class Admins::ProducersController < ApplicationController
     before_action :set_producer, only: [:show, :edit, :update, :destroy]
     
     def index
-        @producers = Producer.page(params[:page]).per(15)
+        # もし、検索ワードがあれば、検索結果を表示 / なければ通常の表示
+        @keyword = params[:keyword]
+        if @keyword.present?
+            @producers = Producer.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(15)
+        else
+            @producers = Producer.page(params[:page]).per(15)
+        end
     end
-
+    
     def new
         @producer = Producer.new
     end
@@ -23,7 +29,7 @@ class Admins::ProducersController < ApplicationController
         # 商品の中でも生産者に紐づくものだけを表示
         @products = Product.where(producer_id: @producer.id).page(params[:page]).per(6)
     end
-
+    
     def edit
     end
     
@@ -39,6 +45,7 @@ class Admins::ProducersController < ApplicationController
         if @producer.destroy
             redirect_to admins_producers_path, notice: "削除が完了しました"
         else
+            @producers = Producer.page(params[:page]).per(15)
             render :index, alert: "削除できませんでした"
         end
     end
