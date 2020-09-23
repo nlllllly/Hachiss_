@@ -12,12 +12,13 @@ class ShippingsController < ApplicationController
     end
     
     def create
+        @customer = current_customer
         @shipping = Shipping.new(shipping_params)
-        @shipping.customer_id = current_customer.id
+        @shipping.customer_id = @customer.id
         if @shipping.save
             redirect_to shippings_path, notice: "登録が完了しました"
         else
-            render :index, alert: "登録できませんでした"
+            redirect_to new_shipping_path, alert: "登録できませんでした"
         end
     end
 
@@ -28,7 +29,7 @@ class ShippingsController < ApplicationController
         if @shipping.update(shipping_params)
             redirect_to shippings_path, notice: "変更を保存しました"
         else
-            render :edit, alert: "変更を保存できませんでした"
+            redirect_to edit_shipping_path, alert: "変更を保存できませんでした"
         end
     end
     

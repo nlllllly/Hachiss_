@@ -15,28 +15,34 @@
                 <div class="pb-4"></div>
                 
 
-                <table class="table table-bordered">
-                    <thead style="color: #FFFFFF; background-color: #524d75;">
-                        <tr>
-                            <th>氏名（漢字）</th>
-                            <th>氏名（カナ）</th>
-                            <th>郵便番号</th>
-                            <th>住所</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody style="color: #524d75; background-color: #fffffe;">
-                        <% @shippings.each do |shipping| %>
+                <% if @shippings.exists? %>
+                    <table class="table table-bordered">
+                        <thead style="color: #FFFFFF; background-color: #524d75;">
                             <tr>
-                                <td><%= shipping.full_name %></td>
-                                <td><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></td>
-                                <td><%= shipping.postcode %></td>
-                                <td><%= shipping.shipping_full_address %></td>
-                                <td><%= link_to "編集", edit_shipping_path(shipping), class:"btn btn-sm btn-success col-12" %></td>
+                                <th>氏名（漢字）</th>
+                                <th>氏名（カナ）</th>
+                                <th>郵便番号</th>
+                                <th>住所</th>
+                                <th></th>
                             </tr>
-                        <% end %>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody style="color: #524d75; background-color: #fffffe;">
+                            <% @shippings.each do |shipping| %>
+                                <tr>
+                                    <td><%= shipping.full_name %></td>
+                                    <td><%= shipping.last_name_kana %> <%= shipping.first_name_kana %></td>
+                                    <td><%= shipping.postcode %></td>
+                                    <td><%= shipping.shipping_full_address %></td>
+                                    <td><%= link_to "編集", edit_shipping_path(shipping), class:"btn btn-sm btn-success col-12" %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                <% else %>
+                    <div class="pt-5"></div>
+                    <h5 class="text-center">登録がありません</h5>
+                    <div class="pt-5"></div>
+                <% end %>
                 
                 <div class="pb-4"></div>
                 <%= link_to "マイページへ戻る", customers_my_page_path %>
