@@ -15,7 +15,7 @@ class ProductCommentsController < ApplicationController
             @products = Product.where.not(sale_status: 0).where(producer_id: @product.producer_id).order(Arel.sql("RANDOM()")).limit(6)
             # 本番環境はRANDを使用
             # @products = Product.where.not(sale_status: 0).where(producer_id: @product.producer_id).order(Arel.sql("RAND()")).limit(6)
-            render "products/show", alert: "コメントを投稿できませんでした"
+            render template: "products/show", alert: "コメントを投稿できませんでした"
         end
     end
     
