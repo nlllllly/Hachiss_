@@ -47,7 +47,7 @@
                             <td><%= product.id %></td>
                             <td>
                                 <%= link_to admins_product_path(product) do %>
-                                    <%= attachment_image_tag product, :image, :fill, 50, 50, class: "border", fallback: "pic_default/no-image.jpg", size:'50x50' %>
+                                    <%= attachment_image_tag product, :image, :fill, 50, 50, class: "border img-fluid", fallback: "pic_default/no-image.jpg", size:'50x50' %>
                                     <%= product.name %>
                                 <% end %>
                             </td>

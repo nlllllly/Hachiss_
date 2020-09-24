@@ -20,7 +20,7 @@
                             <div class="mt-3"></div>
                             <div class="field form-group">
                                 <%= f.label :image, "商品画像" %><br>
-                                <%= attachment_image_tag @product, :image, :fill, 150, 150, class: "border", fallback: "pic_default/no-image.jpg", size:'150x150' %><br>
+                                <%= attachment_image_tag @product, :image, :fill, 150, 150, class: "border img-fluid", fallback: "pic_default/no-image.jpg", size:'150x150' %><br>
                                 <div class="mt-1"></div>
                                 <%= f.attachment_field :image %>
                             </div>

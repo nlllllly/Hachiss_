@@ -10,7 +10,7 @@
                 <div class="row p-4">
                     <div class="col-lg-6 text-center">
                         <div class="pt-4"></div>
-                        <%= attachment_image_tag @product, :image, :fill, 320, 320, class: "border", fallback: "pic_default/no-image.jpg", size:'320x320' %>
+                        <%= attachment_image_tag @product, :image, :fill, 320, 320, class: "border img-fluid", fallback: "pic_default/no-image.jpg", size:'320x320' %>
                     </div>
 
                     <div class="col-lg-6">
@@ -141,7 +141,7 @@
                     <div class="col-lg-4">
                         <div class="text-center">
                             <%= link_to  producer_path(@product.producer) do %>
-                                <%= attachment_image_tag @product.producer, :image, :fill, 200, 200, class: "border", fallback: "pic_default/no-image.jpg", size:'200x200' %>
+                                <%= attachment_image_tag @product.producer, :image, :fill, 200, 200, class: "border img-fluid", fallback: "pic_default/no-image.jpg", size:'200x200' %>
                             <% end %>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
 
                                 <div class="text-center">
                                     <%= link_to product_path(product) do %>
-                                        <%= attachment_image_tag product, :image, :fill, 120, 120, class: "border", fallback: "pic_default/no-image.jpg", size:'120x120' %>
+                                        <%= attachment_image_tag product, :image, :fill, 120, 120, class: "border img-fluid", fallback: "pic_default/no-image.jpg", size:'120x120' %>
                                     <% end %>
                                 </div>
 

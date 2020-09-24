@@ -95,7 +95,7 @@
                                     <tr>
                                         <td>
                                             <%= link_to admins_product_path(order_detail.product) do %>
-                                                <%= attachment_image_tag order_detail.product, :image, :fill, 45, 45, format: 'png',fallback: "no_image.png",size:'45x45' %><br>
+                                                <%= attachment_image_tag order_detail.product, :image, :fill, 45, 45, format: 'png',fallback: "no_image.png",size:'45x45', class:"img-fluid" %><br>
                                                 <%= order_detail.product.name %>
                                             <% end %>
                                         </td>
