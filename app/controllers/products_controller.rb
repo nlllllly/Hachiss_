@@ -8,10 +8,10 @@ class ProductsController < ApplicationController
 
         if selection.present?
             # ソートの並べ替えを行った商品を表示
-            @products = Product.sort(selection).where.not(sale_status: 0).page(params[:page]).per(15)
+            @products = Product.sort(selection).where.not(sale_status: 0).page(params[:page]).per(16)
         else
             # 通常通りに販売停止中以外の商品を表示する
-            @products = Product.where.not(sale_status: 0).page(params[:page]).per(15)
+            @products = Product.where.not(sale_status: 0).page(params[:page]).per(16)
         end
 
     end

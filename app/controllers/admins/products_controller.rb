@@ -6,9 +6,9 @@ class Admins::ProductsController < ApplicationController
         # もし、検索ワードがあれば、検索結果を表示 / なければ通常の表示
         @keyword = params[:keyword]
         if @keyword.present?
-            @products = Product.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(15)
+            @products = Product.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(16)
         else
-            @products = Product.page(params[:page]).per(15)
+            @products = Product.page(params[:page]).per(16)
         end
     end
     
@@ -43,7 +43,7 @@ class Admins::ProductsController < ApplicationController
         if @product.destroy
             redirect_to admins_products_path, notice: "削除が完了しました"
         else
-            @products = Product.page(params[:page]).per(15)
+            @products = Product.page(params[:page]).per(16)
             render :index, alert: "削除できませんでした"
         end
     end

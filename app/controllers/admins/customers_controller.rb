@@ -6,7 +6,7 @@ class Admins::CustomersController < ApplicationController
         # もし、検索ワードがあれば、検索結果を表示 / なければ通常の表示
         @keyword = params[:keyword]
         if @keyword.present?
-            @customers = Customer.where('last_name LIKE(?) or first_name LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").page(params[:page]).per(15)
+            @customers = Customer.where('last_name LIKE(?) or first_name LIKE(?)', "%#{@keyword}%", "%#{@keyword}%").page(params[:page]).per(16)
         else
             @customers = Customer.page(params[:page]).per(15)
         end

@@ -5,7 +5,7 @@ class ProducersController < ApplicationController
 
     def index
         # ステータスが有効の生産者のみ表示
-        @producers = Producer.where(producer_status: 1).page(params[:page]).per(15)
+        @producers = Producer.where(producer_status: 1).page(params[:page]).per(16)
     end
     
     def show

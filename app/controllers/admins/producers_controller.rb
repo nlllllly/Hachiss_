@@ -6,9 +6,9 @@ class Admins::ProducersController < ApplicationController
         # もし、検索ワードがあれば、検索結果を表示 / なければ通常の表示
         @keyword = params[:keyword]
         if @keyword.present?
-            @producers = Producer.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(15)
+            @producers = Producer.where('name LIKE(?)', "%#{@keyword}%").page(params[:page]).per(16)
         else
-            @producers = Producer.page(params[:page]).per(15)
+            @producers = Producer.page(params[:page]).per(16)
         end
     end
     
