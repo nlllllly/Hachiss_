@@ -105,3 +105,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# AWS S3
+gem 'fog-aws'
